@@ -1,0 +1,4 @@
+interface:
+  display_name: "Robust Feature Planner"
+  short_description: "Plan production features without regressions"
+  default_prompt: "Use $robust-feature-planner to create a production-ready implementation plan for this feature."
