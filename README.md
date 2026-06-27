@@ -1,10 +1,10 @@
 <div align="center">
 
-# 🧭 Robust Feature Planner
+# 🧭 Veedence Robust Feature Planner
 
-### A senior-engineer planning discipline for AI — as a **prompt**, a **Claude Code skill**, and an **OpenAI Codex skill**.
+### Plan before AI builds — as a **prompt**, a **Claude Code skill**, an **OpenAI Codex skill**, and an interactive website.
 
-Turn vague feature requests into evidence-grounded, production-ready implementation plans. Discover the real system first, map failure modes, compare architectures, and return a checklist-driven plan with rollback baked in — **no code changes, no assumptions from memory.**
+Turn vague feature requests into evidence-grounded, production-ready implementation plans. Discover the real system first, map failure modes, compare architectures, and return a checklist-driven plan with rollback baked in — **no code changes, no assumptions from memory, no “AI, just make me a feature” gamble.**
 
 <br>
 
@@ -14,10 +14,11 @@ Turn vague feature requests into evidence-grounded, production-ready implementat
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-D97757.svg?logo=anthropic&logoColor=white)
 ![Codex](https://img.shields.io/badge/OpenAI%20Codex-Skill-10A37F.svg?logo=openai&logoColor=white)
 ![Works With](https://img.shields.io/badge/Also%20Works-GPT%20%7C%20Gemini%20%7C%20Cursor-8A2BE2.svg)
+![Website](https://img.shields.io/badge/Website-Vite%20%7C%20TypeScript%20%7C%20GSAP-38E881.svg)
 
 <br>
 
-**Three ways to use the same discipline.** Copy-paste the prompt into any LLM, *or* install the packaged skill in Claude Code or Codex for a template, a quality standard, and an automated plan validator.
+**Three ways to use the same discipline, one polished place to understand it.** Copy-paste the prompt into any LLM, *or* install the packaged skill in Claude Code or Codex for a template, a quality standard, and an automated plan validator.
 
 </div>
 
@@ -27,12 +28,12 @@ Turn vague feature requests into evidence-grounded, production-ready implementat
 
 | | Section | | Section |
 |:---:|:---|:---:|:---|
-| 🎯 | [What Is This?](#-what-is-this) | 🤖 | [Codex Skill](#-openai-codex-skill) |
+| 🎯 | [What Is This?](#-what-is-this) | 🌐 | [Promotional Website](#-promotional-website) |
 | 🧰 | [Three Ways To Use It](#-three-ways-to-use-it) | 📝 | [The Raw Prompt (Any LLM)](#-the-raw-prompt-any-llm) |
 | 🧠 | [Prompt vs. Skill — Which Should I Use?](#-prompt-vs-skill--which-should-i-use) | 🛡️ | [What It Enforces](#%EF%B8%8F-what-it-enforces) |
-| ⚡ | [Claude Code Skill](#-claude-code-skill) | 🗺️ | [The Output Blueprint](#%EF%B8%8F-the-output-blueprint) |
+| ⚡ | [Claude Code Skill](#-claude-code-skill) | 🤖 | [Codex Skill](#-openai-codex-skill) |
 | ✅ | [The Plan Validator](#-the-plan-validator) | ❓ | [FAQ](#-faq) |
-| 📁 | [Repo Structure](#-repo-structure) | 🤝 | [Contributing & License](#-contributing--license) |
+| 🗺️ | [The Output Blueprint](#%EF%B8%8F-the-output-blueprint) | 📁 | [Repo Structure](#-repo-structure) |
 
 ---
 
@@ -51,6 +52,36 @@ This project packages a single, opinionated discipline that fixes that — avail
 
 ---
 
+## 🌐 Promotional Website
+
+This repository now includes a premium, responsive landing page that explains why **pre-planning beats asking AI to immediately build a feature**. It carries Veedence's green/violet identity into a more cinematic product experience with:
+
+- A production-focused prompt-first vs. plan-first comparison
+- The five-stage Veedence planning method and eight thinking disciplines
+- Direct links to the Claude Code skill, Codex skill, and raw Markdown prompt
+- Persistent dark and light modes
+- GSAP/ScrollTrigger motion, Lenis smooth scrolling, and reduced-motion fallbacks
+- Accessible navigation, keyboard focus, mobile layouts, and static-host-friendly output
+
+### Run it locally
+
+```bash
+npm install
+npm run dev
+```
+
+### Validate and build
+
+```bash
+npm run check
+npm run build
+npm run preview
+```
+
+The production build is written to `dist/`. Vite uses relative asset paths so the output can be hosted from a subdirectory such as GitHub Pages.
+
+---
+
 ## 🧰 Three Ways To Use It
 
 | | 📝 Raw Prompt | 🧭 Claude Code Skill | 🤖 Codex Skill |
@@ -61,7 +92,7 @@ This project packages a single, opinionated discipline that fixes that — avail
 | **Quality standard** | Embedded in prompt | Bundled reference doc | Bundled reference doc |
 | **Automated validator** | ✗ (manual) | ✅ (`validate_plan.py`) | ✅ (`validate_plan.py`) |
 | **Auto-triggers on intent** | ✗ | ✅ matches your goal | ✅ matches your goal |
-| **Location in repo** | [`WAGroupChat-…Prompt.md`](./WAGroupChat-Robust-Feature-Planning-Prompt.md) | [`/claude-code`](./claude-code/robust-feature-planner/) | [`/openai-codex`](./openai-codex/robust-feature-planner/) |
+| **Location in repo** | [`Veedence.co.uk-…Prompt.md`](./Veedence.co.uk-Robust-Feature-Planning-Prompt.md) | [`/claude-code`](./claude-code/robust-feature-planner/) | [`/openai-codex`](./openai-codex/robust-feature-planner/) |
 | **Download** | `.md` file | [`.zip`](./robust-feature-planner-claude.zip) | [`.zip`](./robust-feature-planner-codex.zip) |
 
 ---
@@ -82,7 +113,7 @@ The raw prompt is fully self-contained and works in any model. It encodes the sa
 
 </details>
 
-> 🪜 **New here?** Read the [raw prompt](./WAGroupChat-Robust-Feature-Planning-Prompt.md) first to understand the thinking, then install the skill for your tool to use it on autopilot.
+> 🪜 **New here?** Read the [raw prompt](./Veedence.co.uk-Robust-Feature-Planning-Prompt.md) first to understand the thinking, then install the skill for your tool to use it on autopilot.
 
 ---
 
@@ -152,7 +183,7 @@ The same skill, packaged for **OpenAI Codex**. It uses the identical plan templa
 
 The original, self-contained prompt. Works in **ChatGPT, Gemini, Cursor, Copilot Chat**, or any LLM — no install required.
 
-📄 **[`WAGroupChat-Robust-Feature-Planning-Prompt.md`](./WAGroupChat-Robust-Feature-Planning-Prompt.md)**
+📄 **[`Veedence.co.uk-Robust-Feature-Planning-Prompt.md`](./Veedence.co.uk-Robust-Feature-Planning-Prompt.md)**
 
 ### Use it in 3 steps
 
@@ -286,9 +317,9 @@ The **prompt** is the raw text you paste into any LLM — fully self-contained, 
 </details>
 
 <details>
-<summary><b>Why does the filename say "WAGroupChat"?</b></summary>
+<summary><b>Why does the filename say "Veedence.co.uk"?</b></summary>
 
-The prompt was originally written while planning features for a **WhatsApp Group Chat** project — that's its provenance. But the prompt (and the skills built on it) contain *zero* WhatsApp-specific assumptions, so they generalize to any feature in any project. The name is kept for traceability; the content is universal.
+The prompt is published by **Veedence** as a reusable planning discipline for real software projects. The content stays deliberately stack-agnostic, so the Veedence name identifies its publisher without tying it to one framework, product, or codebase.
 
 </details>
 
@@ -327,7 +358,18 @@ Only for the **optional** plan validator. The skill produces full plans without 
 ```
 Planning Prompt/
 ├── README.md                                  ← you are here
-├── WAGroupChat-Robust-Feature-Planning-Prompt.md   ← 📝 the raw prompt (any LLM)
+├── Veedence.co.uk-Robust-Feature-Planning-Prompt.md   ← 📝 the raw prompt (any LLM)
+├── index.html                                 ← 🌐 website entry + SEO metadata
+├── package.json                               ← Vite, TypeScript, GSAP and Lenis
+├── vite.config.ts                             ← static-host-friendly build config
+├── public/assets/                             ← official Veedence logo + mark
+├── src/
+│   ├── main.ts                                ← semantic page composition
+│   ├── content.ts                             ← toolkit, method and map content
+│   ├── theme.ts                               ← persisted dark/light mode
+│   ├── navigation.ts                          ← responsive menu + section state
+│   ├── motion.ts                              ← GSAP, ScrollTrigger and Lenis
+│   └── styles/                                ← tokens, layout, sections, responsive rules
 │
 ├── claude-code/                               ← 🧭 Claude Code skill package
 │   └── robust-feature-planner/
@@ -357,6 +399,8 @@ This discipline improves every time someone uses it on a messier real-world proj
 
 1. **Open an issue** describing the situation the prompt/skill didn't handle well.
 2. **Open a PR** — keep new instructions in the same imperative, stack-agnostic style, and remember the **template, reference, and validator stay identical** across the Claude and Codex packages; only `SKILL.md` platform wording and Codex's `agents/openai.yaml` differ.
+
+**Created and offered by Simeon Williams from [Veedence](https://veedence.co.uk).** If you want to take your vibe coding to the next level, email [hello@Veedence.co.uk](mailto:hello@Veedence.co.uk).
 
 **License:** MIT — copy it, adapt it, bake it into your team's playbook, ship products with it. Attribution appreciated but not required.
 

@@ -1,0 +1,21 @@
+{
+  "name": "veedence-robust-feature-planner",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "The Veedence Robust Feature Planner promotional site.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "check": "tsc --noEmit",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.25"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "vite": "^8.1.0"
+  }
+}

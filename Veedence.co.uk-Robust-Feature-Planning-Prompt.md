@@ -1,4 +1,4 @@
-# Robust Feature Implementation Planning Prompt
+# Veedence Robust Feature Implementation Planning Prompt
 
 Use this prompt when you want an AI coding assistant to produce a senior-level implementation plan for any feature in any project. It is designed to force careful discovery, modular architecture, failure planning, API contract thinking, UI/UX planning, rollout safety, and validation without depending on a specific repository, framework, database, or internal runbook.
 
