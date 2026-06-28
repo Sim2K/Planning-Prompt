@@ -4,7 +4,7 @@
 
 #### Created through a collaboration between **Z.ai GLM 5.2** × **Codex 5.5**
 
-### 🌐 Try it live → **[plan-prompt.netlify.app](https://plan-prompt.netlify.app/)** — the full interactive experience.
+### 🌐 Check it out!→ **[plan-prompt.netlify.app](https://plan-prompt.netlify.app/)** — the full interactive experience.
 
 ### Plan before AI builds — as a **prompt**, a **Claude Code skill**, an **OpenAI Codex skill**, and an interactive website.
 
