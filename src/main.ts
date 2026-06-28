@@ -412,6 +412,26 @@ app.innerHTML = `
             Visit Veedence.co.uk ${externalIcon}
           </a>
         </div>
+        <aside class="founder-support" data-reveal aria-label="Optional support for the project">
+          <div class="founder-support__icon" aria-hidden="true">☕🍫</div>
+          <div class="founder-support__copy">
+            <span>Optional support</span>
+            <h3>Buy Simeon a hot chocolate.</h3>
+            <p>
+              Simeon doesn't drink coffee — even though he probably needs it after staying up
+              late vibe coding things like this to help others.
+            </p>
+            <small>Never required, always appreciated. Please leave a message; it will be read. 🌙💚</small>
+          </div>
+          <a
+            class="button button--kofi"
+            href="https://ko-fi.com/sim2k"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Visit Ko-fi <span aria-hidden="true">↗</span>
+          </a>
+        </aside>
       </div>
     </section>
   </main>
@@ -427,6 +447,7 @@ app.innerHTML = `
       <p>© ${new Date().getFullYear()} Veedence. Robust Feature Planner released under the MIT licence.</p>
       <div class="site-footer__links">
         <a href="https://github.com/Sim2K/Planning-Prompt" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://ko-fi.com/sim2k" target="_blank" rel="noreferrer">Ko-fi</a>
         <a href="mailto:hello@Veedence.co.uk">Contact</a>
         <a href="#top" aria-label="Back to top">↑</a>
       </div>

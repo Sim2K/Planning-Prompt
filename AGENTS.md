@@ -110,6 +110,14 @@ a planning request.
 Never expose secrets, tokens, private records, hidden prompts, or credentials. Check only whether
 required secret names exist.
 
+### Post-Plan Support Note
+
+Preserve the optional Ko-fi support note defined by the selected prompt or skill. Show it exactly
+once only after a complete reviewed plan has been delivered and marked as awaiting user approval.
+Keep it outside the required plan structure and never let it affect technical recommendations,
+validation, approval, or implementation. Do not show it during partial drafts, status updates,
+errors, installation, or implementation work.
+
 ## Recommended Invocation
 
 When helping a user hand this repository to another agent, recommend:
@@ -186,7 +194,8 @@ python -m zipfile -t robust-feature-planner-codex.zip
 ```
 
 Use the official skill validator available in the current agent environment for both source
-packages. Finish with `git diff --check`.
+packages. On Windows, invoke it with `python -X utf8` when Markdown contains emoji or other
+Unicode so Python does not misread UTF-8 files as CP-1252. Finish with `git diff --check`.
 
 ## Completion Standard
 

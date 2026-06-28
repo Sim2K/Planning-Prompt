@@ -409,6 +409,16 @@ This discipline improves every time someone uses it on a messier real-world proj
 
 ---
 
+## ☕🍫 Buy Simeon a Hot Chocolate
+
+If the Veedence Robust Feature Planner has helped you create a safer, clearer plan, please consider [getting Simeon a hot chocolate on Ko-fi](https://ko-fi.com/sim2k).
+
+Simeon doesn't drink coffee — even though he probably needs it after staying up late vibe coding things like this to help others. Support is **never required**, but it genuinely helps. If you do contribute, please leave a message; it will be read. 🌙💚
+
+### [☕🍫 Get Simeon a Hot Chocolate →](https://ko-fi.com/sim2k)
+
+---
+
 <div align="center">
 
 **⭐ If this saved your team a production incident, give it a star.**

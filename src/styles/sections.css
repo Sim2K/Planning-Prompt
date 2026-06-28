@@ -1147,3 +1147,73 @@
   border-color: rgba(6, 18, 11, 0.3);
   color: #06120b;
 }
+
+.founder-support {
+  display: grid;
+  max-width: 980px;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.4rem;
+  margin: 3.5rem auto 0;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-md);
+  color: #f2f8f4;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(245, 119, 200, 0.16), transparent 36%),
+    rgba(7, 17, 13, 0.94);
+  box-shadow: 0 24px 64px rgba(6, 18, 11, 0.18);
+  text-align: left;
+}
+
+.founder-support__icon {
+  display: grid;
+  width: 4.25rem;
+  height: 4.25rem;
+  place-items: center;
+  border: 1px solid rgba(56, 232, 129, 0.24);
+  border-radius: 50%;
+  background: rgba(56, 232, 129, 0.09);
+  font-size: 1.55rem;
+}
+
+.founder-support__copy > span {
+  color: var(--green);
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.founder-support__copy h3 {
+  margin-top: 0.22rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: -0.035em;
+}
+
+.founder-support__copy p {
+  margin-top: 0.35rem;
+  color: rgba(242, 248, 244, 0.72);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.founder-support__copy small {
+  display: block;
+  margin-top: 0.35rem;
+  color: rgba(242, 248, 244, 0.52);
+  font-size: 0.67rem;
+}
+
+.button--kofi {
+  min-width: 130px;
+  color: #ffffff;
+  background: #ff5e5b;
+  box-shadow: 0 12px 30px rgba(255, 94, 91, 0.2);
+}
+
+.button--kofi:hover {
+  box-shadow: 0 16px 38px rgba(255, 94, 91, 0.3);
+}

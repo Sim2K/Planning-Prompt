@@ -358,4 +358,15 @@
   .founder__actions .button {
     width: 100%;
   }
+
+  .founder-support {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .founder-support .button {
+    width: 100%;
+  }
 }
