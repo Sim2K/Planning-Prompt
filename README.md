@@ -2,6 +2,8 @@
 
 # 🧭 Veedence Robust Feature Planner
 
+#### Created through a collaboration between **Z.ai GLM 5.2** × **Codex 5.5**
+
 ### Plan before AI builds — as a **prompt**, a **Claude Code skill**, an **OpenAI Codex skill**, and an interactive website.
 
 Turn vague feature requests into evidence-grounded, production-ready implementation plans. Discover the real system first, map failure modes, compare architectures, and return a checklist-driven plan with rollback baked in — **no code changes, no assumptions from memory, no “AI, just make me a feature” gamble.**
@@ -358,6 +360,7 @@ Only for the **optional** plan validator. The skill produces full plans without 
 ```
 Planning Prompt/
 ├── README.md                                  ← you are here
+├── AGENTS.md                                  ← AI-agent routing, safety and validation contract
 ├── Veedence.co.uk-Robust-Feature-Planning-Prompt.md   ← 📝 the raw prompt (any LLM)
 ├── index.html                                 ← 🌐 website entry + SEO metadata
 ├── package.json                               ← Vite, TypeScript, GSAP and Lenis
