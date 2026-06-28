@@ -38,6 +38,7 @@ app.innerHTML = `
       <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="#why" data-nav-link>Why plan first</a>
         <a href="#method" data-nav-link>The method</a>
+        <a href="./runtime-semantics.html" data-nav-link>Runtime audit</a>
         <a href="#toolkit" data-nav-link>Get the toolkit</a>
       </nav>
 
@@ -75,8 +76,9 @@ app.innerHTML = `
     >
       <a href="#why" data-nav-link><span>01</span> Why plan first</a>
       <a href="#method" data-nav-link><span>02</span> The method</a>
-      <a href="#toolkit" data-nav-link><span>03</span> Get the toolkit</a>
-      <a href="mailto:hello@Veedence.co.uk"><span>04</span> Talk to Veedence</a>
+      <a href="./runtime-semantics.html" data-nav-link><span>03</span> Runtime audit</a>
+      <a href="#toolkit" data-nav-link><span>04</span> Get the toolkit</a>
+      <a href="mailto:hello@Veedence.co.uk"><span>05</span> Talk to Veedence</a>
     </nav>
   </header>
 
@@ -119,7 +121,7 @@ app.innerHTML = `
           </div>
           <dl class="hero__proof" data-hero-reveal>
             <div><dt>20</dt><dd>plan sections</dd></div>
-            <div><dt>8</dt><dd>thinking maps</dd></div>
+            <div><dt>8+1</dt><dd>thinking checks</dd></div>
             <div><dt>3+</dt><dd>architecture branches</dd></div>
             <div><dt>0</dt><dd>guesses dressed as facts</dd></div>
           </dl>
@@ -238,6 +240,35 @@ app.innerHTML = `
       </div>
     </section>
 
+    <section class="runtime-update section" id="runtime-update" aria-labelledby="runtime-update-title">
+      <div class="container runtime-update__layout">
+        <div class="runtime-update__copy" data-reveal>
+          <p class="eyebrow">Update · Optional deeper check</p>
+          <h2 id="runtime-update-title">Runtime Semantics Audit</h2>
+          <p>
+            Some plans look right on paper, then fail when two requests land together, a queue retries,
+            or a transaction behaves differently than expected. This new opt-in mode makes the planner
+            show those hidden assumptions before anyone treats the plan as safe.
+          </p>
+          <a class="button button--primary" href="./runtime-semantics.html">
+            Read about the update <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="runtime-update__panel" data-reveal aria-label="Runtime Semantics Audit summary">
+          <div class="runtime-switch">
+            <span>Switch</span>
+            <strong>OFF by default</strong>
+          </div>
+          <ul>
+            <li><span>01</span><strong>Find the hidden assumptions</strong><small>Timing, ownership, transactions, and delivery order.</small></li>
+            <li><span>02</span><strong>Show where the plan may be wrong</strong><small>Not reassurance — a focused review target.</small></li>
+            <li><span>03</span><strong>Hand reviewers a short hotlist</strong><small>The diffs a seasoned engineer should inspect before merge.</small></li>
+          </ul>
+          <code>+runtime-audit</code>
+        </div>
+      </div>
+    </section>
+
     <section class="method section" id="method" aria-labelledby="method-title">
       <div class="container method__intro">
         <div class="section-heading" data-reveal>
@@ -276,12 +307,12 @@ app.innerHTML = `
       <div class="container">
         <header class="section-heading section-heading--split" data-reveal>
           <div>
-            <p class="eyebrow">Eight thinking disciplines</p>
+            <p class="eyebrow">Eight disciplines + optional ninth</p>
             <h2 id="maps-title">See the whole system, not just the ticket.</h2>
           </div>
           <p>
-            The planner builds eight connected working maps, then returns only the useful
-            evidence, trade-offs, risks, and decisions—not a wall of hidden reasoning.
+            The planner builds eight connected working maps, then can add the Runtime Semantics
+            check when the work needs deeper proof around timing, ownership, and transactions.
           </p>
         </header>
         <div class="maps-grid">
@@ -447,6 +478,7 @@ app.innerHTML = `
       <p>© ${new Date().getFullYear()} Veedence. Robust Feature Planner released under the MIT licence.</p>
       <div class="site-footer__links">
         <a href="https://github.com/Sim2K/Planning-Prompt" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="./runtime-semantics.html">Runtime audit</a>
         <a href="https://ko-fi.com/sim2k" target="_blank" rel="noreferrer">Ko-fi</a>
         <a href="mailto:hello@Veedence.co.uk">Contact</a>
         <a href="#top" aria-label="Back to top">↑</a>

@@ -114,6 +114,60 @@ python scripts/validate_plan.py path/to/plan.md --strict
 Treat linter success as structural validation only; it does not prove architectural correctness.
 If the plan is returned only in chat, apply the same checks manually.
 
+<!-- BEGIN: Runtime Semantics Audit — detect & offer (always on, never auto-runs) -->
+### 6a. Offer the Runtime Semantics Audit (only when not already ON)
+
+If the switch is OFF, scan discovery for runtime-risk signals: writes to a
+record other paths can also write (money, balances, inventory, counters, status);
+background jobs/queues/webhooks/retries; caches, connection pools, or shared
+in-memory state; async/await, threads, or workers; or existing locks/transactions/
+idempotency in nearby code.
+
+If any appear, deliver the normal plan as usual, then append a one-time offer in
+plain language — translate the risk, do not name the jargon, and say why it's being
+offered without being asked. Example:
+
+> **Optional deeper check.** While reading your project I noticed <plain reason, e.g.
+> "this feature updates the same balance other requests can change at the same
+> moment">. When two things happen at once, code like this can quietly do the wrong
+> thing — double charges, oversold stock, a number that ends up wrong — and those
+> bugs rarely show up in a quick read or basic tests. I can run an optional Runtime
+> Semantics Audit: I'll show where my plan is *assuming* the timing, ownership, and
+> database behavior work a certain way, flag where I'm most likely wrong, and give
+> you a short checklist for a human to verify before merge. It's off by default and I
+> haven't run it. Want me to? — reply `+runtime-audit` or "yes, run it".
+
+Offer once only. Never block or delay the plan to ask. If the user accepts, treat the
+switch as ON and run step 6b against the plan already delivered. If declined or
+ignored, continue normally and do not raise it again.
+<!-- END: Runtime Semantics Audit — detect & offer -->
+
+<!-- BEGIN: Runtime Semantics Audit switch (optional, default OFF) -->
+### 6b. Runtime Semantics Audit (only if switch is ON)
+
+This step runs **only** when the request contains an activation token
+(`+runtime-audit`, `RUNTIME-AUDIT: ON`), an equivalent phrase ("runtime audit",
+"deep runtime", "fundamentals mode", "expose your assumptions", "where might you
+be wrong"), or the user accepted the 6a offer. If none apply, skip this step
+entirely — produce the normal plan with no changes.
+
+When ON:
+
+1. Read `references/runtime-semantics-audit.md` and follow its prime directive:
+   expose assumptions, lead with "where I am most likely wrong," never certify.
+2. During discovery, also capture the runtime model (execution model, DB isolation
+   level in effect, pools/lifetime, delivery semantics, existing guards).
+3. After the base plan, append the addendum using
+   `assets/runtime-semantics-addendum.md`: a filled **Invariants Ledger** (rows
+   ordered blast-radius DESC, confidence ASC) and a ranked **Reviewer Hotlist**.
+4. Reproduce the standing caveat verbatim. A green ledger is an invitation to
+   review, not a certificate.
+5. Apply the added review gates from the reference. If saving Markdown, also run:
+   `python scripts/validate_runtime_semantics.py path/to/plan.md --strict`
+6. In the final delivery note, point the reader at the Reviewer Hotlist as the diffs
+   where a fundamentals-strong human review is non-optional before merge.
+<!-- END: Runtime Semantics Audit switch -->
+
 ### 7. Deliver
 
 Return the completed plan, not the private working maps. End with a short final review note naming:

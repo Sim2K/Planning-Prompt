@@ -17,6 +17,12 @@ Optional project context:
 Add any known stack, product goals, constraints, user roles, external services, deadlines, or files to inspect. If this is blank, discover the project from the repo and available tools.
 </PROJECT_CONTEXT>
 
+Optional runtime audit switch:
+<RUNTIME_AUDIT>
+OFF   <!-- set to ON to force the runtime-semantics audit (thread safety,
+           memory/resource ownership, transaction isolation, ordering) -->
+</RUNTIME_AUDIT>
+
 Core instructions:
 - Do not make code, database, infrastructure, or configuration changes unless explicitly asked.
 - First discover the project. Read available repo instructions, README files, architecture docs, package/config files, existing plans, and nearby code related to the feature.
@@ -107,6 +113,31 @@ Review requirements before finalizing:
 - Check that every risky assumption has a verification task.
 - If this review exposes a gap, update the plan before returning it.
 
+IF <RUNTIME_AUDIT> is ON:
+After the normal plan, add a "Runtime Semantics Audit" section. Argue against your
+own design: expose every assumption about thread/async safety, memory & resource
+ownership, transaction isolation, and ordering/delivery. For each, give the runtime
+condition under which it breaks and the concrete corruption that follows. Produce:
+(a) an Invariants Ledger table — columns: Resource/path | Assumption | Axis |
+Confidence (Observed/Inferred/Unknown) | If wrong -> divergence | Diff-level check —
+ordered by blast-radius then lowest confidence first; and (b) a ranked Reviewer
+Hotlist of the <=5 lowest-confidence, highest-blast items, each with location, the
+one runtime question, the evidence that settles it, and blast radius. Reproduce this
+caveat verbatim: "A green ledger is an invitation to review, not a certificate."
+Lead with where you are most likely wrong. If shared state, writes, or concurrency
+exist, "no concerns" is not allowed — state what you'd need to observe and mark it
+Unknown.
+IF <RUNTIME_AUDIT> is OFF: ignore this block entirely.
+
+ALWAYS (even when OFF): if discovery shows the feature writes to shared records
+(money, inventory, counters, status), or involves jobs/queues/webhooks/retries,
+caches/pools/shared memory, async/threads, or existing locks/transactions, then after
+the normal plan add a one-time, plain-language offer that says what you noticed and
+why it matters (e.g. "two things happening at once can double-charge or lose a
+number"), notes the audit is optional and not yet run, and tells the user to reply
+`+runtime-audit` to run it. Offer once; never block the plan; if accepted, run the
+block above against the plan you delivered.
+
 End with a short note naming what was reviewed and what validation is still required before implementation.
 
 After delivering the complete reviewed plan, state: "The plan is complete and awaiting your approval. No implementation has started."
@@ -137,3 +168,4 @@ Use this checklist to verify that a generated plan has the same quality bar as t
 - [ ] Covers logs, retries, replay, backfill, reconciliation, diagnostics, dashboards, quotas, and alerts.
 - [ ] Orders implementation phases by dependency.
 - [ ] Includes validation and done criteria.
+- [ ] Offers or runs the Runtime Semantics Audit only under the switch rules.

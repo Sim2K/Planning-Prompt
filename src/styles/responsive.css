@@ -68,6 +68,17 @@
     min-height: auto;
   }
 
+  .runtime-update__layout,
+  .runtime-page-hero__layout,
+  .runtime-use__layout,
+  .runtime-command__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .runtime-audit-card {
+    max-width: 680px;
+  }
+
   .method-step {
     grid-template-columns: 4.5rem 0.5fr 1.5fr;
   }
@@ -166,8 +177,25 @@
     height: 1px;
   }
 
+  .runtime-grid,
   .download-grid {
     grid-template-columns: 1fr;
+  }
+
+  .runtime-info-card,
+  .runtime-signal-card {
+    min-height: auto;
+    border-radius: 0 !important;
+  }
+
+  .runtime-info-card:first-child,
+  .runtime-signal-card:first-child {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+  }
+
+  .runtime-info-card:last-child,
+  .runtime-signal-card:last-child {
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg) !important;
   }
 
   .download-card {
@@ -270,8 +298,35 @@
   }
 
   .section-heading h2,
-  .blueprint__copy h2 {
+  .blueprint__copy h2,
+  .runtime-update__copy h2 {
     font-size: clamp(2.5rem, 13vw, 4.2rem);
+  }
+
+  .runtime-page-hero h1 {
+    font-size: clamp(3.3rem, 15vw, 5.4rem);
+  }
+
+  .runtime-page-hero__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .runtime-page-hero__actions .button {
+    width: 100%;
+  }
+
+  .runtime-audit-card dl div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .runtime-update__panel {
+    border-radius: var(--radius-md);
+  }
+
+  .runtime-command-box {
+    border-radius: var(--radius-md);
   }
 
   .comparison-card {

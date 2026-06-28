@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Runtime Semantics Audit is an opt-in Robust Feature Planner mode that exposes timing, ownership, transaction, and delivery assumptions before implementation."
+    />
+    <meta name="theme-color" content="#07110d" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Runtime Semantics Audit — Robust Feature Planner" />
+    <meta
+      property="og:description"
+      content="A new optional audit mode for plans where timing, retries, transactions, or shared state can quietly change production behavior."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Runtime Semantics Audit — Robust Feature Planner</title>
+    <link rel="icon" type="image/png" href="./assets/veedence-mark.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (() => {
+        const key = "veedence-planner-theme";
+        const saved = localStorage.getItem(key);
+        const theme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : matchMedia("(prefers-color-scheme: light)").matches
+              ? "light"
+              : "dark";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.classList.add("js");
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/runtime-semantics.ts"></script>
+  </body>
+</html>

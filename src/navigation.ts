@@ -47,7 +47,9 @@ export function initNavigation(): void {
         .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (!visible) return;
       links.forEach((link) => {
-        const isActive = link.getAttribute("href") === `#${visible.target.id}`;
+        const href = link.getAttribute("href");
+        if (!href?.startsWith("#")) return;
+        const isActive = href === `#${visible.target.id}`;
         link.classList.toggle("is-active", isActive);
         if (isActive) link.setAttribute("aria-current", "location");
         else link.removeAttribute("aria-current");

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -203,6 +204,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("plan", type=Path, nargs="?", help="Markdown plan to validate")
     parser.add_argument("--strict", action="store_true", help="Treat coverage warnings as errors")
     parser.add_argument("--json", action="store_true", help="Emit machine-readable JSON")
+    parser.add_argument("--runtime", action="store_true", help="Also run Runtime Semantics Audit checks")
     parser.add_argument("--self-test", action="store_true", help="Run built-in validator tests")
     return parser.parse_args()
 
@@ -221,6 +223,14 @@ def main() -> int:
         return 2
 
     result = validate_text(text, strict=args.strict)
+    if result.valid and args.runtime:
+        runtime_validator = Path(__file__).with_name("validate_runtime_semantics.py")
+        runtime_args = [sys.executable, str(runtime_validator), str(args.plan)]
+        if args.strict:
+            runtime_args.append("--strict")
+        runtime_result = subprocess.call(runtime_args)
+        if runtime_result != 0:
+            return runtime_result
     payload = {
         "path": str(args.plan),
         "valid": result.valid,
