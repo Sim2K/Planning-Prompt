@@ -4,6 +4,8 @@
 
 #### Created through a collaboration between **Z.ai GLM 5.2** × **Codex 5.5**
 
+### 🌐 Try it live → **[plan-prompt.netlify.app](https://plan-prompt.netlify.app/)** — the full interactive experience.
+
 ### Plan before AI builds — as a **prompt**, a **Claude Code skill**, an **OpenAI Codex skill**, and an interactive website.
 
 Turn vague feature requests into evidence-grounded, production-ready implementation plans. Discover the real system first, map failure modes, compare architectures, and return a checklist-driven plan with rollback baked in — **no code changes, no assumptions from memory, no “AI, just make me a feature” gamble.**
@@ -55,6 +57,8 @@ This project packages a single, opinionated discipline that fixes that — avail
 ---
 
 ## 🌐 Promotional Website
+
+> 🟢 **Live site:** **[plan-prompt.netlify.app](https://plan-prompt.netlify.app/)** — the cinematic, interactive home for the planner. Source for the site lives in this repo (`src/`, `public/`, `index.html`).
 
 This repository now includes a premium, responsive landing page that explains why **pre-planning beats asking AI to immediately build a feature**. It carries Veedence's green/violet identity into a more cinematic product experience with:
 

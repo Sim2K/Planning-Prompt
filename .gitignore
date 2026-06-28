@@ -3,3 +3,6 @@ node_modules/
 dist/
 .playwright-cli/
 output/playwright/
+
+# Private drafts — not for GitHub
+LINKEDIN-POST.md
