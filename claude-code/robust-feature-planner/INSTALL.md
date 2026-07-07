@@ -7,7 +7,7 @@ and return a checklist-driven, rollback-safe plan.
 ## Requirements
 
 - **Claude Code** CLI (or the Claude Code extension in your IDE).
-- *(Optional)* **Python 3.6+** — only needed if you want Claude to run the structural plan
+- *(Optional)* **Python 3.8+** — only needed if you want Claude to run the structural plan
   validator (`scripts/validate_plan.py`). The skill works fully without it; validation then runs
   as manual checks.
 

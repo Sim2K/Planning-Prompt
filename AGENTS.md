@@ -147,23 +147,34 @@ plan for regressions, and do not implement changes unless I explicitly authorize
 
 ### Cross-Platform Skill Invariants
 
-Keep these files behaviorally identical across the Claude and Codex packages:
+Keep these files byte-identical across the Claude and Codex packages (enforced by
+`scripts/check_sync.py`):
 
+- `CHANGELOG.md`
 - `assets/feature-plan-template.md`
+- `assets/runtime-semantics-addendum.md`
+- `assets/example-plan.md`
 - `references/planning-quality-standard.md`
+- `references/runtime-semantics-audit.md`
 - `scripts/validate_plan.py`
+- `scripts/validate_runtime_semantics.py`
 
-Platform-specific wording may differ in `SKILL.md`. Codex additionally owns
-`agents/openai.yaml`. Claude additionally owns `INSTALL.md`.
+Platform-specific wording may differ in `SKILL.md`, but both must declare the same
+`version:` in frontmatter. Codex additionally owns `agents/openai.yaml`. Claude additionally
+owns `INSTALL.md`.
 
 When shared skill resources change:
 
 1. Update both source packages.
-2. Run both validator self-tests.
-3. Validate both skill structures.
-4. Rebuild both ZIP archives from the corresponding source folders.
-5. Confirm each archive contains one top-level `robust-feature-planner/` folder.
-6. Update README and website claims or links when behavior or filenames change.
+2. Bump `version:` in both `SKILL.md` frontmatter blocks and add a `CHANGELOG.md` entry
+   (kept identical in both packages).
+3. Run both validator self-tests.
+4. Validate both example plans with `--strict`.
+5. Rebuild both ZIP archives with `python scripts/build_zips.py`.
+6. Run `python scripts/check_sync.py` — it verifies shared-file parity, version parity, and
+   that each archive contains exactly one top-level `robust-feature-planner/` folder matching
+   its source.
+7. Update README and website claims or links when behavior or filenames change.
 
 ### Website Validation
 
@@ -184,14 +195,19 @@ builds.
 
 ### Skill Validation
 
-Run:
+Run (Python 3.8+):
 
 ```bash
 python claude-code/robust-feature-planner/scripts/validate_plan.py --self-test
 python openai-codex/robust-feature-planner/scripts/validate_plan.py --self-test
-python -m zipfile -t robust-feature-planner-claude.zip
-python -m zipfile -t robust-feature-planner-codex.zip
+python claude-code/robust-feature-planner/scripts/validate_runtime_semantics.py --self-test
+python openai-codex/robust-feature-planner/scripts/validate_runtime_semantics.py --self-test
+python claude-code/robust-feature-planner/scripts/validate_plan.py claude-code/robust-feature-planner/assets/example-plan.md --strict
+python openai-codex/robust-feature-planner/scripts/validate_plan.py openai-codex/robust-feature-planner/assets/example-plan.md --strict
+python scripts/check_sync.py
 ```
+
+The same checks run in CI via `.github/workflows/validate.yml`.
 
 Use the official skill validator available in the current agent environment for both source
 packages. On Windows, invoke it with `python -X utf8` when Markdown contains emoji or other

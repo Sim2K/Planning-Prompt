@@ -4,6 +4,8 @@
 
 #### Created through a collaboration between **Z.ai GLM 5.2** × **Codex 5.5**
 
+#### 🆕 **v2.0.0 — the updated Fable5 edition**, refined with **Claude Fable 5** — see the [changelog](./claude-code/robust-feature-planner/CHANGELOG.md)
+
 ### 🌐 Check it out!→ **[plan-prompt.netlify.app](https://plan-prompt.netlify.app/)** — the full interactive experience.
 
 ### Plan before AI builds — as a **prompt**, a **Claude Code skill**, an **OpenAI Codex skill**, and an interactive website.
@@ -295,13 +297,19 @@ The prompt plans the **entire** lifecycle — including the unglamorous stages (
 
 ## ✅ The Plan Validator
 
-Both skills ship a Python validator (`scripts/validate_plan.py`) that structurally checks any generated plan. It catches:
+Both skills ship a Python validator (`scripts/validate_plan.py`, Python 3.8+) that structurally checks any generated plan. It catches:
 
 - ❌ Missing or out-of-order required sections
+- ❌ Empty sections and empty risk/module tables — a bare skeleton no longer passes
 - ❌ Unresolved template placeholders (`<FEATURE_REQUEST>`, `<TODO>`, etc.)
 - ❌ Fewer than 3 compared architecture options (with no stated constraint)
-- ⚠️ Missing evidence labels (Observed / Inferred / Unknown)
-- ⚠️ No explicit coverage of compatibility, idempotency, permissions, rollback, observability…
+- ⚠️ Missing evidence labels (Observed / Inferred / Unknown) and no named existing tests
+- ⚠️ Coverage checked **inside the section where it must live** — rollback in the Rollout plan, idempotency in Data/API/Failure, observability in Operations…
+- ⚠️ Architecture options that cite no concrete project evidence (cosmetic variants)
+- ⚠️ Missing stable IDs (`A#`/`R#`/`P#.#`) and risk IDs that no task ever references
+- 💡 A note when strong runtime-risk signals (isolation levels, locks, race conditions) appear without a Runtime Semantics Audit
+
+`--runtime` merges the Runtime Semantics checks into the same output and JSON payload, and a worked example plan that passes `--strict` ships in each package ([`assets/example-plan.md`](./claude-code/robust-feature-planner/assets/example-plan.md)).
 
 ```bash
 # Validate a plan (treat coverage warnings as errors with --strict)
@@ -382,7 +390,7 @@ The prompt is published by **Veedence** as a reusable planning discipline for re
 <details>
 <summary><b>Do I need Python?</b></summary>
 
-Only for the **optional** plan validator. The skill produces full plans without it; it just runs the quality checks manually instead. Python 3.6+ if you want the validator.
+Only for the **optional** plan validator. The skill produces full plans without it; it just runs the quality checks manually instead. Python 3.8+ if you want the validator.
 
 </details>
 
@@ -413,7 +421,9 @@ Planning Prompt/
 │   └── robust-feature-planner/
 │       ├── SKILL.md                           ← skill entry point (frontmatter + workflow)
 │       ├── INSTALL.md                         ← step-by-step install guide
+│       ├── CHANGELOG.md                       ← skill version history (v2.0.0 Fable5 edition)
 │       ├── assets/feature-plan-template.md    ← the 20-section plan skeleton
+│       ├── assets/example-plan.md             ← 🆕 worked example plan (passes --strict)
 │       ├── assets/runtime-semantics-addendum.md ← optional Runtime Semantics output addendum
 │       ├── references/planning-quality-standard.md  ← discovery matrix + review gates
 │       ├── references/runtime-semantics-audit.md    ← optional Runtime Semantics method
@@ -424,12 +434,19 @@ Planning Prompt/
 │   └── robust-feature-planner/
 │       ├── SKILL.md
 │       ├── agents/openai.yaml                 ← Codex agent manifest (platform-specific)
+│       ├── CHANGELOG.md
 │       ├── assets/feature-plan-template.md
+│       ├── assets/example-plan.md
 │       ├── assets/runtime-semantics-addendum.md
 │       ├── references/planning-quality-standard.md
 │       ├── references/runtime-semantics-audit.md
 │       ├── scripts/validate_plan.py
 │       └── scripts/validate_runtime_semantics.py
+│
+├── scripts/
+│   ├── check_sync.py                          ← 🆕 verifies both packages + ZIPs stay identical
+│   └── build_zips.py                          ← 🆕 rebuilds both ZIPs from source folders
+├── .github/workflows/validate.yml             ← 🆕 CI: self-tests, example plans, parity check
 │
 ├── robust-feature-planner-claude.zip          ← ⬇️ one-click download (Claude Code)
 └── robust-feature-planner-codex.zip           ← ⬇️ one-click download (Codex)
