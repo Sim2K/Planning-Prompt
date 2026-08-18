@@ -93,9 +93,10 @@ app.innerHTML = `
             <em>not to bill.</em>
           </h1>
           <p class="runtime-page-hero__lead" data-hero-reveal>
-            Simeon Williams built the Robust Feature Planner late at night, then gave it away —
-            because better planning shouldn't be a privilege. It is free for everyone, forever.
-            If it helps you, an optional thank-you helps fund better updates. Never required.
+            Simeon Williams built the Robust Feature Planner late at night, then shared it —
+            because better planning shouldn't be a privilege. It is free for every individual,
+            forever; teams and client work are licensed. If it helps you, an optional thank-you
+            helps fund better updates. Never required.
           </p>
           <div class="runtime-page-hero__actions" data-hero-reveal>
             <a class="button button--kofi" href="https://ko-fi.com/sim2k" target="_blank" rel="noreferrer">
