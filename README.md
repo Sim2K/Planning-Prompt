@@ -1,0 +1,518 @@
+<div align="center">
+
+# 🧭 Veedence Robust Feature Planner
+
+#### Created through a collaboration between **Z.ai GLM 5.2** × **Codex 5.5** and **Claude Code - Fable 5** used for review.
+
+#### 🆕 **v2.0.4** - plans now save as Veedence-branded files, validate on the spot, and stamp the planner version - see the [changelog](./claude-code/robust-feature-planner/CHANGELOG.md)
+
+### 🌐 Check it out!→ **[plan-prompt.netlify.app](https://plan-prompt.netlify.app/)** - the full interactive experience.
+
+### Plan before AI builds - as a **prompt**, a **Claude Code skill**, an **OpenAI Codex skill**, and an interactive website.
+
+Turn vague feature requests into evidence-grounded, production-ready implementation plans. Discover the real system first, map failure modes, compare architectures, and return a checklist-driven plan with rollback baked in - now with an opt-in Runtime Semantics Audit for timing, ownership, and transaction assumptions - **no code changes, no assumptions from memory, no “AI, just make me a feature” gamble.**
+
+<br>
+
+![License: Free for Personal Use](https://img.shields.io/badge/License-Personal%20Free%20%C2%B7%20Commercial%20Licensed-blue.svg)
+![Markdown](https://img.shields.io/badge/Markdown-✓-083CA1.svg?logo=markdown&logoColor=white)
+![Stack Agnostic](https://img.shields.io/badge/Stack-Agnostic-2EA44F.svg)
+![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-D97757.svg?logo=anthropic&logoColor=white)
+![Codex](https://img.shields.io/badge/OpenAI%20Codex-Skill-10A37F.svg?logo=openai&logoColor=white)
+![Works With](https://img.shields.io/badge/Also%20Works-GPT%20%7C%20Gemini%20%7C%20Cursor-8A2BE2.svg)
+![Website](https://img.shields.io/badge/Website-Vite%20%7C%20TypeScript%20%7C%20GSAP-38E881.svg)
+
+<br>
+
+**Three ways to use the same discipline, one polished place to understand it.** Copy-paste the prompt into any LLM, *or* install the packaged skill in Claude Code or Codex for a template, a quality standard, and an automated plan validator.
+
+</div>
+
+---
+
+## 📑 Table of Contents
+
+| | Section | | Section |
+|:---:|:---|:---:|:---|
+| 🎯 | [What Is This?](#-what-is-this) | 🌐 | [Promotional Website](#-promotional-website) |
+| 🧰 | [Three Ways To Use It](#-three-ways-to-use-it) | 📝 | [The Raw Prompt (Any LLM)](#-the-raw-prompt-any-llm) |
+| 🧠 | [Prompt vs. Skill - Which Should I Use?](#-prompt-vs-skill--which-should-i-use) | 🛡️ | [What It Enforces](#%EF%B8%8F-what-it-enforces) |
+| ⚡ | [Claude Code Skill](#-claude-code-skill) | 🤖 | [Codex Skill](#-openai-codex-skill) |
+| ✅ | [The Plan Validator](#-the-plan-validator) | 🧬 | [Runtime Semantics Audit](#-runtime-semantics-audit) |
+| ❓ | [FAQ](#-faq) | 📁 | [Repo Structure](#-repo-structure) |
+| 🗺️ | [The Output Blueprint](#%EF%B8%8F-the-output-blueprint) | 🌐 | [Update Page](https://plan-prompt.netlify.app/runtime-semantics.html) |
+
+---
+
+## 🎯 What Is This?
+
+Ask an AI to *"plan this feature"* and you usually get a confident to-do list that **skips discovery, ignores failure modes, and quietly assumes your stack.** Weeks later you discover it forgot idempotency, missed a rollback, or assumed a schema that doesn't exist.
+
+This project packages a single, opinionated discipline that fixes that - available in three forms:
+
+1. 🔎 **Discover the real project first** - read actual code, schema, and config; never guess from memory.
+2. 🧱 **Design modularly** - every module owns one responsibility and talks through a narrow, typed contract.
+3. 💥 **Plan for failure** - what fails open vs. closed, what retries, what alerts, what can be replayed or repaired.
+4. 🛡️ **Treat security, UX, and rollout as first-class** - not afterthoughts bolted on at the end.
+
+> 💡 **The result:** a plan that's safe to execute in real production, modular enough to evolve, and explicit about how it avoids regressions.
+
+---
+
+## 🌐 Promotional Website
+
+> 🟢 **Live site:** **[plan-prompt.netlify.app](https://plan-prompt.netlify.app/)** - the cinematic, interactive home for the planner. Source for the site lives in this repo (`src/`, `public/`, `index.html`).
+
+This repository now includes a premium, responsive landing page that explains why **pre-planning beats asking AI to immediately build a feature**. It carries Veedence's green/violet identity into a more cinematic product experience with:
+
+- A production-focused prompt-first vs. plan-first comparison
+- The five-stage Veedence planning method, eight thinking disciplines, and opt-in Runtime Semantics Audit
+- Direct links to the Claude Code skill, Codex skill, raw Markdown prompt, and Runtime Semantics update page
+- A copy-paste [How to use](https://plan-prompt.netlify.app/how-to-use.html) guide page - every invocation with copy buttons
+- An [About Simeon & support](https://plan-prompt.netlify.app/support.html) page - why the planner is free, and where optional support goes
+- [`/llms.txt`](https://plan-prompt.netlify.app/llms.txt) - machine-readable install instructions so AI agents can install the skill from one sentence
+- Persistent dark and light modes
+- GSAP/ScrollTrigger motion, Lenis smooth scrolling, and reduced-motion fallbacks
+- Accessible navigation, keyboard focus, mobile layouts, and static-host-friendly output
+
+### Run it locally
+
+```bash
+npm install
+npm run dev
+```
+
+### Validate and build
+
+```bash
+npm run check
+npm run build
+npm run preview
+```
+
+The production build is written to `dist/`. Vite uses relative asset paths so the output can be hosted from a subdirectory such as GitHub Pages.
+
+---
+
+## 🧰 Three Ways To Use It
+
+| | 📝 Raw Prompt | 🧭 Claude Code Skill | 🤖 Codex Skill |
+|:--|:--|:--|:--|
+| **Best for** | Any LLM, one-off plans | Claude Code users, repeat work | OpenAI Codex users |
+| **Setup** | Copy-paste into chat | Drop into `skills/` folder | Drop into `skills/` folder |
+| **Plan template** | Embedded in prompt | Bundled, auto-applied | Bundled, auto-applied |
+| **Quality standard** | Embedded in prompt | Bundled reference doc | Bundled reference doc |
+| **Automated validator** | ✗ (manual) | ✅ (`validate_plan.py`, optional `--runtime`) | ✅ (`validate_plan.py`, optional `--runtime`) |
+| **Auto-triggers on intent** | ✗ | ✅ matches your goal | ✅ matches your goal |
+| **Location in repo** | [`Veedence.co.uk-…Prompt.md`](./Veedence.co.uk-Robust-Feature-Planning-Prompt.md) | [`/claude-code`](./claude-code/robust-feature-planner/) | [`/openai-codex`](./openai-codex/robust-feature-planner/) |
+| **Download** | `.md` file | [`.zip`](./robust-feature-planner-claude.zip) | [`.zip`](./robust-feature-planner-codex.zip) |
+
+---
+
+## 🧠 Prompt vs. Skill - Which Should I Use?
+
+<details open>
+<summary><b>Use the <b>skill</b> if you plan features regularly in Claude Code or Codex.</b></summary>
+
+The skill is the prompt *plus* superpowers: it **auto-triggers** when you describe a planning task, **applies a structured plan template** so output is always consistent, is guided by a **quality-standard reference** that prevents blind spots, and can run an **automated validator** that catches missing sections, unresolved placeholders, and missing coverage before you ever act on the plan. Since v2.0.3 every delivered plan also **offers to save itself** to `<repo>/plans/<feature>.md` as a Veedence-branded file - validated on the spot when Python is available - and every plan's Document Control **stamps the planner version** that produced it.
+
+</details>
+
+<details>
+<summary><b>Use the <b>raw prompt</b> if you're in ChatGPT, Gemini, Cursor, or any other LLM.</b></summary>
+
+The raw prompt is fully self-contained and works in any model. It encodes the same discipline - discover, map, compare, review - as plain text you paste into a chat. You lose auto-triggering and the automated validator, but you keep the entire planning methodology. It's also the foundation the skills were built from.
+
+</details>
+
+> 🪜 **New here?** Read the [raw prompt](./Veedence.co.uk-Robust-Feature-Planning-Prompt.md) first to understand the thinking, then install the skill for your tool to use it on autopilot.
+
+---
+
+## ⚡ Claude Code Skill
+
+The packaged skill for [Claude Code](https://claude.com/claude-code). Once installed, Claude plans features like a senior engineer - and can validate the plan structurally.
+
+> ⚡ **Fastest install - one sentence.** Tell your AI agent:
+> *“Go to https://plan-prompt.netlify.app/ and get the skill”*
+> Agents are pointed at [`plan-prompt.netlify.app/llms.txt`](https://plan-prompt.netlify.app/llms.txt), which walks them through downloading and installing it for you.
+
+### Install (2 options)
+
+<details open>
+<summary><b>👉 Option A - one-click download (recommended)</b></summary>
+
+1. Download **[`robust-feature-planner-claude.zip`](./robust-feature-planner-claude.zip)**.
+2. Unzip it. You'll get a `robust-feature-planner/` folder.
+3. Copy that folder into your skills directory:
+   - **Global (all projects):** `~/.claude/skills/robust-feature-planner/`
+   - **One project:** `<repo>/.claude/skills/robust-feature-planner/`
+4. Restart Claude Code.
+
+> On Windows, `~` is `C:\Users\<you>\`. Full step-by-step (incl. PowerShell) is in [`claude-code/robust-feature-planner/INSTALL.md`](./claude-code/robust-feature-planner/INSTALL.md).
+
+</details>
+
+<details>
+<summary>👉 Option B - clone this repo</summary>
+
+```bash
+git clone https://github.com/<your-user>/Planning-Prompt.git
+# Global install:
+cp -r "Planning-Prompt/claude-code/robust-feature-planner" ~/.claude/skills/
+```
+
+</details>
+
+### Use it
+
+Just describe your goal - Claude Code triggers the skill automatically:
+
+> Plan a feature that lets users export their account data as a CSV.
+
+Or invoke it explicitly: `/robust-feature-planner`
+
+The skill is **read-only by design** - it produces a plan and won't change your code unless you explicitly authorize implementation.
+
+📁 **Skill source:** [`claude-code/robust-feature-planner/`](./claude-code/robust-feature-planner/) · 📄 [`INSTALL.md`](./claude-code/robust-feature-planner/INSTALL.md) · 📄 [`SKILL.md`](./claude-code/robust-feature-planner/SKILL.md)
+
+---
+
+## 🤖 OpenAI Codex Skill
+
+The same skill, packaged for **OpenAI Codex**. It uses the identical plan template, quality standard, and validator - the only differences are the Codex agent manifest (`agents/openai.yaml`) and Codex's skill-invocation syntax.
+
+### Install
+
+1. Download **[`robust-feature-planner-codex.zip`](./robust-feature-planner-codex.zip)** (or clone the repo).
+2. Unzip to get `robust-feature-planner/`.
+3. Drop it into your Codex skills directory (follow your Codex setup's skill-install path).
+4. Invoke via Codex's skill reference, e.g. `Use $robust-feature-planner to create a production-ready implementation plan for this feature.`
+
+📁 **Skill source:** [`openai-codex/robust-feature-planner/`](./openai-codex/robust-feature-planner/) · 📄 [`SKILL.md`](./openai-codex/robust-feature-planner/SKILL.md) · 📄 [`agents/openai.yaml`](./openai-codex/robust-feature-planner/agents/openai.yaml)
+
+> 📌 Both skills share **identical** plan template, quality-standard reference, and validator. The `SKILL.md` differs only in minor platform wording (the Claude version references `CLAUDE.md`); Codex additionally ships the `agents/openai.yaml` manifest. The methodology and output are the same.
+
+---
+
+## 📝 The Raw Prompt (Any LLM)
+
+The original, self-contained prompt. Works in **ChatGPT, Gemini, Cursor, Copilot Chat**, or any LLM - no install required.
+
+📄 **[`Veedence.co.uk-Robust-Feature-Planning-Prompt.md`](./Veedence.co.uk-Robust-Feature-Planning-Prompt.md)**
+
+### Use it in 3 steps
+
+1. **Open the prompt** and copy the contents of the code block.
+2. **Fill in two placeholders:**
+
+```text
+<FEATURE_REQUEST>
+Describe the feature here.
+</FEATURE_REQUEST>
+
+<PROJECT_CONTEXT>
+Stack, goals, constraints, roles, services, deadlines, or files to inspect.
+(Leave blank to let the AI discover the project itself.)
+</PROJECT_CONTEXT>
+
+<RUNTIME_AUDIT>
+OFF
+</RUNTIME_AUDIT>
+```
+
+3. **Send it.** You'll get a complete plan following the [output blueprint](#-the-output-blueprint) below.
+
+> 🎁 **Pro tip:** Leave `<PROJECT_CONTEXT>` blank on purpose. The prompt is designed to *discover* the project - and forcing the AI to investigate often surfaces things you'd have forgotten to mention.
+
+---
+
+## 🛡️ What It Enforces
+
+Both skills and the raw prompt encode the same non-negotiable quality bar:
+
+### 🧱 Modularity & Non-Regression
+Each module owns **one responsibility** and communicates through typed helpers or narrow APIs. Optional integrations, external calls, webhooks, and workers **must be able to fail without breaking core product behavior.**
+
+### 💥 Explicit Failure Behavior
+What **fails open vs. closed**, what's retried, what's logged, what alerts, what's visible to users/admins, and what can be **replayed or repaired.**
+
+### 📜 Contracts Designed For Change
+**Versioning**, backwards compatibility, **idempotency**, pagination/cursors, ordering, deduplication, redaction, and schema evolution.
+
+### 🔐 Security & Privacy From The Start
+Auth, authorization, tenant/user isolation, least privilege, secret storage, **key rotation/revocation**, audit logs, **redacted logs**, retention, and safe browser exposure.
+
+### 📡 Operations & Safe Rollout
+Logs, metrics, traces, retries, replay, backfill, reconciliation, health checks, alerting - plus feature flags, migration strategy, backwards-compatible deploy order, **rollback path**, and staged release.
+
+### 🧠 The 8 Thinking Disciplines + Optional 9th
+Before writing the plan, eight private maps are built - current-state, dependency, lifecycle, failure-mode, options (≥3 viable), contracts, UX states, and validation - surfacing only evidence, tradeoffs, and decisions (never raw chain-of-thought).
+
+The ninth discipline is **Runtime Semantics**. It is **OFF by default** and turns on only when requested with `+runtime-audit`, `RUNTIME-AUDIT: ON`, or an equivalent phrase. When ON, the planner exposes assumptions about timing, ownership, transactions, and delivery order instead of pretending those assumptions are already proven.
+
+---
+
+## 🧬 Runtime Semantics Audit
+
+Runtime Semantics Audit is an optional deeper check for features where “two things happening at once” can quietly change the result: balances, inventory, counters, status updates, queues, retries, shared caches, long-running jobs, or transaction-heavy flows.
+
+When the switch is ON, the planner adds:
+
+- **Invariants Ledger:** the assumptions the plan is making about runtime behavior.
+- **Reviewer Hotlist:** the riskiest places a fundamentals-strong human must inspect before merge.
+- **Extra validation:** `validate_runtime_semantics.py`, or `validate_plan.py --runtime`, checks that the audit section is structurally complete.
+
+It does **not** claim the design is correct. A green Runtime Semantics ledger is an **invitation to review, not a certificate**.
+
+Read the website update page: **[Runtime Semantics Audit](https://plan-prompt.netlify.app/runtime-semantics.html)**.
+
+---
+
+## 🗺️ The Output Blueprint
+
+Every plan follows the same predictable structure. Implementation tasks use markdown checkboxes (`- [ ]`) - ready to drop into a tracker, PR, or project board.
+
+<details>
+<summary><b>📖 Expand the 20-section blueprint</b></summary>
+
+```
+ 1. Title                          11. Data And Persistence Plan *
+ 2. Document Control               12. API, Event, And Contract Plan *
+ 3. Feature Summary                13. UI/UX Plan *
+ 4. Current-State Findings         14. Security And Privacy Plan
+ 5. Assumptions & Open Questions   15. Failure Isolation And Recovery Plan
+ 6. Goals And Non-Goals            16. Operations, Observability, And Support
+ 7. Non-Negotiable Design Rules    17. Rollout, Migration, And Rollback Plan
+ 8. Risk And Issue Register        18. Implementation Phases With Checklist Tasks
+ 9. Branch Review & Architecture   19. Validation Plan
+10. Module Map                     20. Done Criteria + Final Review Note
+```
+*Sections 11–13 are **conditional** - included only when that kind of work is involved, so a logic refactor isn't padded with a fake "API Plan." See the template: [`assets/feature-plan-template.md`](./claude-code/robust-feature-planner/assets/feature-plan-template.md).
+
+</details>
+
+### The planning lifecycle
+
+The prompt plans the **entire** lifecycle - including the unglamorous stages (disable, recover, audit, migrate, remove) that most plans skip and most incidents come from:
+
+```
+ CREATE ─▶ READ ─▶ UPDATE ─▶ DELETE ─▶ SYNC ─▶ RETRY ─▶ DISABLE ─▶ RECOVER ─▶ AUDIT ─▶ MIGRATE ─▶ REMOVE
+```
+
+---
+
+## ✅ The Plan Validator
+
+Both skills ship a Python validator (`scripts/validate_plan.py`, Python 3.8+) that structurally checks any generated plan. It catches:
+
+- ❌ Missing or out-of-order required sections
+- ❌ Empty sections and empty risk/module tables - a bare skeleton no longer passes
+- ❌ Unresolved template placeholders (`<FEATURE_REQUEST>`, `<TODO>`, etc.)
+- ❌ Fewer than 3 compared architecture options (with no stated constraint)
+- ⚠️ Missing evidence labels (Observed / Inferred / Unknown) and no named existing tests
+- ⚠️ Coverage checked **inside the section where it must live** - rollback in the Rollout plan, idempotency in Data/API/Failure, observability in Operations…
+- ⚠️ Architecture options that cite no concrete project evidence (cosmetic variants)
+- ⚠️ Missing stable IDs (`A#`/`R#`/`P#.#`) and risk IDs that no task ever references
+- 💡 A note when strong runtime-risk signals (isolation levels, locks, race conditions) appear without a Runtime Semantics Audit
+
+`--runtime` merges the Runtime Semantics checks into the same output and JSON payload, and a worked example plan that passes `--strict` ships in each package ([`assets/example-plan.md`](./claude-code/robust-feature-planner/assets/example-plan.md)).
+
+```bash
+# Validate a plan (treat coverage warnings as errors with --strict)
+python scripts/validate_plan.py path/to/plan.md --strict
+
+# Validate the optional Runtime Semantics Audit too
+python scripts/validate_plan.py path/to/plan.md --strict --runtime
+
+# Validate only the Runtime Semantics Audit addendum
+python scripts/validate_runtime_semantics.py path/to/plan.md --strict
+
+# Run the built-in self-test
+python scripts/validate_plan.py --self-test
+```
+
+> ⚠️ Linter success is **structural** validation only - it does not prove architectural correctness. A green Runtime Semantics ledger is an **invitation to review, not a certificate**. See [`scripts/validate_plan.py`](./claude-code/robust-feature-planner/scripts/validate_plan.py).
+
+<details>
+<summary><b>📋 Built-in review checklist (the gates the validator + skill enforce)</b></summary>
+
+- [ ] Discovers the actual project structure before designing.
+- [ ] Captures assumptions, open questions, risks, and issues **before** the final design.
+- [ ] Compares **at least 3 implementation options** before choosing one.
+- [ ] Chooses the **simplest robust modular** architecture.
+- [ ] Makes non-regression and failure isolation explicit.
+- [ ] Defines module ownership and communication contracts.
+- [ ] Covers inbound/outbound/sync APIs, jobs, webhooks, callbacks, realtime flows where relevant.
+- [ ] Covers versioning, auth, scopes, idempotency, pagination, filtering, ordering, redaction, compatibility.
+- [ ] Uses the discovered data model - never assumes payloads.
+- [ ] Covers UI/UX setup, disabled states, guidance, test actions, health, and recovery.
+- [ ] Covers security, privacy, tenant isolation, secret rotation, audit, retention, redacted logs.
+- [ ] Covers logs, retries, replay, backfill, reconciliation, diagnostics, quotas, alerts.
+- [ ] Orders implementation phases by dependency; includes validation and done criteria.
+
+Full version in [`references/planning-quality-standard.md`](./claude-code/robust-feature-planner/references/planning-quality-standard.md).
+
+</details>
+
+---
+
+## ❓ FAQ
+
+<details>
+<summary><b>What's the difference between the prompt and the skill?</b></summary>
+
+The **prompt** is the raw text you paste into any LLM - fully self-contained, works everywhere. The **skill** is that same prompt repackaged for an AI coding agent (Claude Code / Codex), adding: auto-triggering on intent, a bundled plan template, a bundled quality-standard reference, and an automated plan validator. The methodology is identical; the skill just makes it faster and more consistent.
+
+</details>
+
+<details>
+<summary><b>Why does the filename say "Veedence.co.uk"?</b></summary>
+
+The prompt is published by **Veedence** as a reusable planning discipline for real software projects. The content stays deliberately stack-agnostic, so the Veedence name identifies its publisher without tying it to one framework, product, or codebase.
+
+</details>
+
+<details>
+<summary><b>Are the two skills different in what they produce?</b></summary>
+
+**No.** They share identical plan template, quality standard, and validator. The only platform-specific file is Codex's `agents/openai.yaml` manifest. Pick the one matching your tool - or install both if you use both tools.
+
+</details>
+
+<details>
+<summary><b>Will the skill change my code?</b></summary>
+
+**No.** The skill's first instruction is to treat the task as **read-only planning** unless you explicitly authorize implementation. It produces a plan, not a diff.
+
+</details>
+
+<details>
+<summary><b>Does this only work for a specific stack?</b></summary>
+
+**No.** It's deliberately stack-agnostic. It discovers your actual stack (frontend, backend, DB, storage, auth, external services, deploy path) from your repo and tools, rather than assuming one.
+
+</details>
+
+<details>
+<summary><b>Do I need Python?</b></summary>
+
+Only for the **optional** plan validator. The skill produces full plans without it; it just runs the quality checks manually instead. Python 3.8+ if you want the validator.
+
+</details>
+
+---
+
+## 📁 Repo Structure
+
+```
+Planning Prompt/
+├── README.md                                  ← you are here
+├── AGENTS.md                                  ← AI-agent routing, safety and validation contract
+├── LICENSE                                    ← Veedence Community License
+├── Veedence.co.uk-Robust-Feature-Planning-Prompt.md   ← 📝 the raw prompt (any LLM)
+├── index.html                                 ← 🌐 homepage entry + SEO metadata
+├── runtime-semantics.html                     ← 🧬 Runtime Semantics update page
+├── how-to-use.html                            ← 📖 copy-paste invocation guide page
+├── support.html                               ← ☕🍫 About Simeon & optional support page
+├── package.json                               ← Vite, TypeScript, GSAP and Lenis
+├── vite.config.ts                             ← static-host-friendly build config
+├── public/
+│   ├── assets/                                ← official Veedence logo + mark
+│   └── llms.txt                               ← 🤖 agent install instructions ("get the skill")
+├── src/
+│   ├── main.ts                                ← homepage semantic page composition
+│   ├── runtime-semantics.ts                   ← Runtime Semantics page composition
+│   ├── how-to-use.ts                          ← How-to-use page composition
+│   ├── support.ts                             ← About/Support page composition
+│   ├── copy.ts                                ← copy-to-clipboard blocks (with fallback)
+│   ├── content.ts                             ← toolkit, method and map content
+│   ├── theme.ts                               ← persisted dark/light mode
+│   ├── navigation.ts                          ← responsive menu + section state
+│   ├── motion.ts                              ← GSAP, ScrollTrigger and Lenis
+│   └── styles/                                ← tokens, layout, sections, responsive rules
+│
+├── claude-code/                               ← 🧭 Claude Code skill package
+│   └── robust-feature-planner/
+│       ├── SKILL.md                           ← skill entry point (frontmatter + workflow)
+│       ├── INSTALL.md                         ← step-by-step install guide
+│       ├── CHANGELOG.md                       ← skill version history
+│       ├── LICENSE                            ← Veedence Community License
+│       ├── assets/feature-plan-template.md    ← the 20-section plan skeleton
+│       ├── assets/example-plan.md             ← worked example plan (passes --strict)
+│       ├── assets/runtime-semantics-addendum.md ← optional Runtime Semantics output addendum
+│       ├── references/planning-quality-standard.md  ← discovery matrix + review gates
+│       ├── references/runtime-semantics-audit.md    ← optional Runtime Semantics method
+│       ├── scripts/validate_plan.py           ← structural plan validator
+│       └── scripts/validate_runtime_semantics.py ← optional Runtime Semantics validator
+│
+├── openai-codex/                              ← 🤖 OpenAI Codex skill package
+│   └── robust-feature-planner/
+│       ├── SKILL.md
+│       ├── agents/openai.yaml                 ← Codex agent manifest (platform-specific)
+│       ├── CHANGELOG.md
+│       ├── LICENSE
+│       ├── assets/feature-plan-template.md
+│       ├── assets/example-plan.md
+│       ├── assets/runtime-semantics-addendum.md
+│       ├── references/planning-quality-standard.md
+│       ├── references/runtime-semantics-audit.md
+│       ├── scripts/validate_plan.py
+│       └── scripts/validate_runtime_semantics.py
+│
+├── scripts/
+│   ├── check_sync.py                          ← verifies both packages + ZIPs stay identical
+│   └── build_zips.py                          ← rebuilds both ZIPs from source folders
+├── .github/workflows/validate.yml             ← CI: self-tests, example plans, parity check
+│
+├── robust-feature-planner-claude.zip          ← ⬇️ one-click download (Claude Code)
+└── robust-feature-planner-codex.zip           ← ⬇️ one-click download (Codex)
+```
+
+---
+
+## 🤝 Contributing & License
+
+This discipline improves every time someone uses it on a messier real-world project and finds a gap. If you spot one:
+
+1. **Open an issue** describing the situation the prompt/skill didn't handle well.
+2. **Open a PR** - keep new instructions in the same imperative, stack-agnostic style, and remember the **template, shared references, addenda, and validators stay identical** across the Claude and Codex packages; only `SKILL.md` platform wording and Codex's `agents/openai.yaml` differ.
+
+**Created and offered by Simeon Williams from [Veedence](https://veedence.co.uk).** If you want to take your vibe coding to the next level, email [hello@Veedence.co.uk](mailto:hello@Veedence.co.uk).
+
+### 📜 License - free for you, licensed for companies
+
+The planner is released under the [Veedence Community License](./LICENSE):
+
+- **🆓 Free for personal use, forever.** Individuals - learning, side projects, personal work, and a single developer choosing to use it at their job. No sign-up, no payment.
+- **💼 Companies, teams, and client work need a paid licence.** Email [hello@Veedence.co.uk](mailto:hello@Veedence.co.uk) **before** use if: two or more people at your organization will use it, it becomes a team/company standard, it gets embedded into internal tooling or playbooks, or you're a freelancer/agency using it on client deliverables.
+- **🚫 No extraction.** No copying any part of it into other products, prompt packs, internal standards, training material, or published work without written permission.
+- **✍️ Attribution is required, not optional.** This exact line must stay intact in every copy, fork, licensed adaptation, and in any generated plan that is shared with others:
+
+> **Robust Feature Planner** by **Simeon Williams** - [Veedence.co.uk](https://veedence.co.uk)
+
+**Crediting it in a post, video, or tutorial?** Copy-paste welcome: *Robust Feature Planner by Simeon Williams - Veedence.co.uk - https://github.com/Sim2K/Planning-Prompt*
+
+Full terms in [LICENSE](./LICENSE). Provided as-is, no warranty.
+
+---
+
+## ☕🍫 Buy Simeon a Hot Chocolate
+
+If the Veedence Robust Feature Planner has helped you create a safer, clearer plan, please consider [getting Simeon a hot chocolate on Ko-fi](https://ko-fi.com/sim2k).
+
+Simeon doesn't drink coffee - even though he probably needs it after staying up late vibe coding things like this to help others. Support is **never required**, but it genuinely helps. If you do contribute, please leave a message; it will be read. 🌙💚
+
+*Donations are a thank-you from individuals - they're separate from commercial licensing and never a condition of personal use.*
+
+### [☕🍫 Get Simeon a Hot Chocolate →](https://ko-fi.com/sim2k)
+
+---
+
+<div align="center">
+
+**⭐ If this saved your team a production incident, give it a star.**
+
+*Plan like the person who'll be on-call for it.*
+
+</div>

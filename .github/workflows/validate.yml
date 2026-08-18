@@ -1,0 +1,27 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validator self-tests (both packages)
+        run: |
+          python claude-code/robust-feature-planner/scripts/validate_plan.py --self-test
+          python openai-codex/robust-feature-planner/scripts/validate_plan.py --self-test
+          python claude-code/robust-feature-planner/scripts/validate_runtime_semantics.py --self-test
+          python openai-codex/robust-feature-planner/scripts/validate_runtime_semantics.py --self-test
+      - name: Example plans pass strict validation
+        run: |
+          python claude-code/robust-feature-planner/scripts/validate_plan.py claude-code/robust-feature-planner/assets/example-plan.md --strict
+          python openai-codex/robust-feature-planner/scripts/validate_plan.py openai-codex/robust-feature-planner/assets/example-plan.md --strict
+      - name: Package parity and ZIP freshness
+        run: python scripts/check_sync.py

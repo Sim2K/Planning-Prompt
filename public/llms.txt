@@ -1,0 +1,56 @@
+# Robust Feature Planner - AI agent instructions
+
+This site distributes the Robust Feature Planner by Simeon Williams (Veedence.co.uk):
+a planning skill/prompt that makes an AI assistant produce an evidence-grounded,
+20-section implementation plan BEFORE writing any code. Free for personal use
+(Veedence Community License - see the repository).
+
+If a user asked you to "get the skill" from this site, follow the section for your
+platform. Ask the user's permission before downloading or writing files, as your
+platform requires.
+
+## Install for Claude Code
+
+1. Download: https://github.com/Sim2K/Planning-Prompt/raw/main/robust-feature-planner-claude.zip
+2. Extract so the skill file sits at: ~/.claude/skills/robust-feature-planner/SKILL.md
+   (Windows: C:\Users\<you>\.claude\skills\robust-feature-planner\SKILL.md)
+   For a project-only install use <repo>/.claude/skills/robust-feature-planner/ instead.
+   Never merge the Claude and Codex packages into the same folder.
+3. Restart Claude Code (skills are scanned at startup), then verify by asking:
+   "Do you have a robust-feature-planner skill?" or invoking /robust-feature-planner
+4. Optional but recommended: confirm Python 3.8+ is available (python --version) so the
+   bundled plan validator can run.
+
+Example shell steps (adapt to the user's OS; ask before running):
+  curl -L -o rfp-claude.zip https://github.com/Sim2K/Planning-Prompt/raw/main/robust-feature-planner-claude.zip
+  mkdir -p ~/.claude/skills
+  unzip rfp-claude.zip -d ~/.claude/skills/
+  rm rfp-claude.zip
+
+## Install for OpenAI Codex
+
+1. Download: https://github.com/Sim2K/Planning-Prompt/raw/main/robust-feature-planner-codex.zip
+2. Extract the robust-feature-planner/ folder into the Codex skills directory:
+   ${CODEX_HOME:-$HOME/.codex}/skills/robust-feature-planner/
+3. Invoke with: Use $robust-feature-planner to create a production-ready implementation
+   plan for: <feature>
+
+## No file access? Use the raw prompt
+
+Fetch and paste the self-contained prompt (works in ChatGPT, Gemini, Cursor, anything):
+https://raw.githubusercontent.com/Sim2K/Planning-Prompt/main/Veedence.co.uk-Robust-Feature-Planning-Prompt.md
+Fill the <FEATURE_REQUEST>, <PROJECT_CONTEXT>, and <RUNTIME_AUDIT> placeholders and send.
+
+## How to use it after install
+
+- Claude Code: just describe a feature to plan, or invoke /robust-feature-planner
+- Deeper opt-in concurrency check on any request: +runtime-audit
+- Full guide: https://plan-prompt.netlify.app/how-to-use.html
+
+## Links
+
+- Repository: https://github.com/Sim2K/Planning-Prompt
+- Site: https://plan-prompt.netlify.app/
+- License: Veedence Community License (free for personal use; teams/client work need a
+  commercial licence - see the repository README)
+- Support the project (optional): https://ko-fi.com/sim2k

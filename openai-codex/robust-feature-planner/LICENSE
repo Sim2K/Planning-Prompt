@@ -1,0 +1,132 @@
+Veedence Community License v1.0
+
+Copyright (c) 2026 Simeon Williams - Veedence (https://veedence.co.uk)
+
+This license covers everything in this repository (together, "the Work"): the
+raw planning prompt, the Claude Code and OpenAI Codex skill packages, the plan
+template, references and addenda, example plans, the Python validators, the
+website source, and the documentation.
+
+Plain-English summary (the numbered terms below are what counts): free for
+individuals, paid and by permission for companies, teams, and client work,
+attribution always, no warranty.
+
+1. FREE PERMITTED USE - no permission needed
+
+   The following uses are free, forever, with no sign-up and no payment:
+
+   a. Personal use by an individual: personal projects, learning,
+      experimentation, and side projects.
+   b. Individual workplace use: one employed person using the Work at their
+      job, by their own individual choice, for their own tasks only.
+      Generating plans or other output for other people at the organization,
+      as a service to the organization, or that the organization relies on
+      beyond that individual's own work, is organizational use under
+      section 2(a) - one person may not operate the Work on behalf of an
+      unlicensed organization. This permission ends when the conditions in
+      section 2(a) are met.
+   c. A freelancer's own personal projects (not client deliverables).
+   d. Reading and studying the Work, by anyone, including employees of any
+      organization.
+
+   Individuals may privately adapt the Work for their own permitted use.
+   Private adaptations must not be shared, published, or distributed.
+
+2. COMMERCIAL LICENSE REQUIRED - ask first, then pay
+
+   A paid commercial license, agreed in advance with the copyright holder,
+   is required for:
+
+   a. Organizational use: use of the Work, in whole or in part, by an
+      organization - meaning any of the following, whichever happens first:
+      (i) two or more people at the same organization use it; (ii) it is
+      set, recommended, or documented as a team or company standard; or
+      (iii) it is embedded into the organization's tooling, onboarding
+      material, internal documentation, or playbooks.
+   b. Client work: any use of the Work where the output serves or is
+      delivered to a paying third party - including use by freelancers,
+      agencies, and consultancies on client projects. This applies
+      regardless of business form: performing client work as a sole trader,
+      through a single-person company, or through any other vehicle does
+      not turn client work into personal use.
+
+   "Organization" means a company, firm, charity, public body, or other
+   entity, together with its parents, subsidiaries, and affiliates, and
+   includes contractors and agency workers engaged by any of them. People
+   working for or within any of these count as being at the same
+   organization; splitting use across group entities or contractor
+   arrangements does not avoid section 2(a).
+
+   To obtain a commercial license, contact hello@Veedence.co.uk before use.
+
+3. NO EXTRACTION
+
+   No portion of the Work may be copied, adapted, or incorporated into any
+   other product, prompt collection, internal standard, training material,
+   tool, or published work without prior written permission from the
+   copyright holder (normally as part of a commercial license). This applies
+   regardless of how small the portion is. Section 1's private-adaptation
+   allowance does not permit sharing or embedding adapted material anywhere
+   beyond the individual's own use.
+
+4. ATTRIBUTION - required, not optional
+
+   The required attribution line is, verbatim:
+
+       Robust Feature Planner by Simeon Williams - Veedence.co.uk
+
+   It must appear:
+
+   a. In every copy or fork of the Work: this LICENSE file and the
+      attribution in the README must remain intact and unmodified.
+   b. In any adaptation made under a granted license: the line above plus
+      "Adapted from the original with permission," at the top of the adapted
+      material or in its header.
+   c. In any plan or document generated with the Work that is shared with
+      anyone other than the person who generated it: the attribution line in
+      the document's Document Control section or footer must not be removed.
+
+5. DONATIONS
+
+   Donations (for example via Ko-fi) are a voluntary thank-you from
+   individuals. They are appreciated but never required, and they are
+   entirely separate from - and do not substitute for - the commercial
+   license in section 2.
+
+6. CONTRIBUTIONS
+
+   By submitting a contribution (issue, pull request, or suggestion) you
+   agree that the copyright holder may use, modify, and relicense it as part
+   of the Work, including under commercial licenses.
+
+7. NO WARRANTY
+
+   THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+   THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
+   ARISING FROM, OUT OF OR IN CONNECTION WITH THE WORK OR ITS USE.
+
+8. TERMINATION
+
+   Your rights under this license end automatically if you breach any of its
+   terms. Rights may be reinstated at the copyright holder's discretion once
+   the breach is cured.
+
+9. NOT OPEN SOURCE
+
+   The Work is source-available, not open source as commonly defined,
+   because commercial use is restricted. Nothing in this license limits
+   uses that cannot be restricted by copyright (such as fair use/fair
+   dealing where applicable).
+
+10. LICENSOR AND GOVERNING LAW
+
+   The licensor and copyright holder is Simeon Williams; "Veedence" refers
+   to Veedence (https://veedence.co.uk), through which commercial licenses
+   are granted. This license is governed by the laws of England and Wales,
+   and the courts of England and Wales have exclusive jurisdiction over
+   disputes arising from it, except where mandatory local law provides
+   otherwise.
+
+Contact for commercial licensing and permissions: hello@Veedence.co.uk
