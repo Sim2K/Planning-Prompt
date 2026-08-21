@@ -16,7 +16,7 @@ present, and sections that do not apply say so with evidence instead of being pa
 - Evidence baseline: repository state at commit 65a93bb
 - Change log: 1.0.0 - first complete plan
 - Attribution: Robust Feature Planner by Simeon Williams - Veedence.co.uk
-- Planner: robust-feature-planner v2.x - plan-prompt.netlify.app
+- Planner: robust-feature-planner v2.x - plannerskill.veedence.com
 
 ## Feature Summary
 

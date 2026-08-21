@@ -11,7 +11,7 @@
 - Evidence baseline: <Commit, branch, environment, or inspection date - re-verify Observed findings before implementing if this has moved>
 - Change log: <version - what changed and why>
 - Attribution: Robust Feature Planner by Simeon Williams - Veedence.co.uk <keep this line intact if the plan is shared with anyone else>
-- Planner: robust-feature-planner v<version> - plan-prompt.netlify.app <replace <version> with the version from the skill's SKILL.md frontmatter>
+- Planner: robust-feature-planner v<version> - plannerskill.veedence.com <replace <version> with the version from the skill's SKILL.md frontmatter>
 
 ## Feature Summary
 

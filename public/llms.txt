@@ -45,12 +45,12 @@ Fill the <FEATURE_REQUEST>, <PROJECT_CONTEXT>, and <RUNTIME_AUDIT> placeholders 
 
 - Claude Code: just describe a feature to plan, or invoke /robust-feature-planner
 - Deeper opt-in concurrency check on any request: +runtime-audit
-- Full guide: https://plan-prompt.netlify.app/how-to-use.html
+- Full guide: https://plannerskill.veedence.com/how-to-use.html
 
 ## Links
 
 - Repository: https://github.com/Sim2K/Planning-Prompt
-- Site: https://plan-prompt.netlify.app/
+- Site: https://plannerskill.veedence.com/
 - License: Veedence Community License (free for personal use; teams/client work need a
   commercial licence - see the repository README)
 - Support the project (optional): https://ko-fi.com/sim2k

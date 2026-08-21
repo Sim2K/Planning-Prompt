@@ -6,7 +6,7 @@
 
 #### 🆕 **v2.0.4** - plans now save as Veedence-branded files, validate on the spot, and stamp the planner version - see the [changelog](./claude-code/robust-feature-planner/CHANGELOG.md)
 
-### 🌐 Check it out!→ **[plan-prompt.netlify.app](https://plan-prompt.netlify.app/)** - the full interactive experience.
+### 🌐 Check it out!→ **[plannerskill.veedence.com](https://plannerskill.veedence.com/)** - the full interactive experience.
 
 ### Plan before AI builds - as a **prompt**, a **Claude Code skill**, an **OpenAI Codex skill**, and an interactive website.
 
@@ -40,7 +40,7 @@ Turn vague feature requests into evidence-grounded, production-ready implementat
 | ⚡ | [Claude Code Skill](#-claude-code-skill) | 🤖 | [Codex Skill](#-openai-codex-skill) |
 | ✅ | [The Plan Validator](#-the-plan-validator) | 🧬 | [Runtime Semantics Audit](#-runtime-semantics-audit) |
 | ❓ | [FAQ](#-faq) | 📁 | [Repo Structure](#-repo-structure) |
-| 🗺️ | [The Output Blueprint](#%EF%B8%8F-the-output-blueprint) | 🌐 | [Update Page](https://plan-prompt.netlify.app/runtime-semantics.html) |
+| 🗺️ | [The Output Blueprint](#%EF%B8%8F-the-output-blueprint) | 🌐 | [Update Page](https://plannerskill.veedence.com/runtime-semantics.html) |
 
 ---
 
@@ -61,16 +61,16 @@ This project packages a single, opinionated discipline that fixes that - availab
 
 ## 🌐 Promotional Website
 
-> 🟢 **Live site:** **[plan-prompt.netlify.app](https://plan-prompt.netlify.app/)** - the cinematic, interactive home for the planner. Source for the site lives in this repo (`src/`, `public/`, `index.html`).
+> 🟢 **Live site:** **[plannerskill.veedence.com](https://plannerskill.veedence.com/)** - the cinematic, interactive home for the planner. Source for the site lives in this repo (`src/`, `public/`, `index.html`).
 
 This repository now includes a premium, responsive landing page that explains why **pre-planning beats asking AI to immediately build a feature**. It carries Veedence's green/violet identity into a more cinematic product experience with:
 
 - A production-focused prompt-first vs. plan-first comparison
 - The five-stage Veedence planning method, eight thinking disciplines, and opt-in Runtime Semantics Audit
 - Direct links to the Claude Code skill, Codex skill, raw Markdown prompt, and Runtime Semantics update page
-- A copy-paste [How to use](https://plan-prompt.netlify.app/how-to-use.html) guide page - every invocation with copy buttons
-- An [About Simeon & support](https://plan-prompt.netlify.app/support.html) page - why the planner is free, and where optional support goes
-- [`/llms.txt`](https://plan-prompt.netlify.app/llms.txt) - machine-readable install instructions so AI agents can install the skill from one sentence
+- A copy-paste [How to use](https://plannerskill.veedence.com/how-to-use.html) guide page - every invocation with copy buttons
+- An [About Simeon & support](https://plannerskill.veedence.com/support.html) page - why the planner is free, and where optional support goes
+- [`/llms.txt`](https://plannerskill.veedence.com/llms.txt) - machine-readable install instructions so AI agents can install the skill from one sentence
 - Persistent dark and light modes
 - GSAP/ScrollTrigger motion, Lenis smooth scrolling, and reduced-motion fallbacks
 - Accessible navigation, keyboard focus, mobile layouts, and static-host-friendly output
@@ -134,8 +134,8 @@ The raw prompt is fully self-contained and works in any model. It encodes the sa
 The packaged skill for [Claude Code](https://claude.com/claude-code). Once installed, Claude plans features like a senior engineer - and can validate the plan structurally.
 
 > ⚡ **Fastest install - one sentence.** Tell your AI agent:
-> *“Go to https://plan-prompt.netlify.app/ and get the skill”*
-> Agents are pointed at [`plan-prompt.netlify.app/llms.txt`](https://plan-prompt.netlify.app/llms.txt), which walks them through downloading and installing it for you.
+> *“Go to https://plannerskill.veedence.com/ and get the skill”*
+> Agents are pointed at [`plannerskill.veedence.com/llms.txt`](https://plannerskill.veedence.com/llms.txt), which walks them through downloading and installing it for you.
 
 ### Install (2 options)
 
@@ -265,7 +265,7 @@ When the switch is ON, the planner adds:
 
 It does **not** claim the design is correct. A green Runtime Semantics ledger is an **invitation to review, not a certificate**.
 
-Read the website update page: **[Runtime Semantics Audit](https://plan-prompt.netlify.app/runtime-semantics.html)**.
+Read the website update page: **[Runtime Semantics Audit](https://plannerskill.veedence.com/runtime-semantics.html)**.
 
 ---
 

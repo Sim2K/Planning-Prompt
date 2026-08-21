@@ -4,8 +4,8 @@ This package is a **Claude Code Skill**. Once installed, Claude Code can plan fe
 senior engineer would - discover the real system first, map failure modes, compare architectures,
 and return a checklist-driven, rollback-safe plan.
 
-> ⚡ **Fastest route:** tell your AI agent - *"Go to https://plan-prompt.netlify.app/ and get the
-> skill"*. Agents are pointed at [plan-prompt.netlify.app/llms.txt](https://plan-prompt.netlify.app/llms.txt),
+> ⚡ **Fastest route:** tell your AI agent - *"Go to https://plannerskill.veedence.com/ and get the
+> skill"*. Agents are pointed at [plannerskill.veedence.com/llms.txt](https://plannerskill.veedence.com/llms.txt),
 > which walks them through this install for you. The steps below are the manual equivalent.
 
 ## Requirements

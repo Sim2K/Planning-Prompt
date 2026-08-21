@@ -155,7 +155,7 @@ app.innerHTML = `
         <div class="copy-grid">
           ${copyBlock(
             "Not installed yet? Tell your AI",
-            "Go to https://plan-prompt.netlify.app/ and get the skill",
+            "Go to https://plannerskill.veedence.com/ and get the skill",
             "the one-sentence install request",
           )}
           ${copyBlock("Slash command", "/robust-feature-planner", "the Claude Code slash command")}

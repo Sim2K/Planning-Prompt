@@ -5,12 +5,12 @@
 ### Added
 
 - Every plan's Document Control now carries
-  `Planner: robust-feature-planner v2.0.4 - plan-prompt.netlify.app`, so any plan names the
+  `Planner: robust-feature-planner v2.0.4 - plannerskill.veedence.com`, so any plan names the
   planner version that produced it; `scripts/check_sync.py` now fails if this line and the
   SKILL.md frontmatter version ever drift.
 - One-sentence agent install: the site now serves `llms.txt` with platform-specific install
   steps, every page carries an AI-agent pointer to it in the raw HTML, and the README and
-  how-to-use page document the sentence - "Go to https://plan-prompt.netlify.app/ and get the
+  how-to-use page document the sentence - "Go to https://plannerskill.veedence.com/ and get the
   skill".
 
 ## 2.0.3 - saved plan files with Veedence branding (2026-08-18)
@@ -35,7 +35,7 @@
 ### Changed
 
 - The support note's "Learn more" link now points to the About/Support page on the live site
-  (https://plan-prompt.netlify.app/support.html) instead of the repository.
+  (https://plannerskill.veedence.com/support.html) instead of the repository.
 
 ## 2.0.1 - once-per-session support note (2026-08-17)
 
