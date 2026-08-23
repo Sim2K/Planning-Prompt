@@ -1,0 +1,8 @@
+# Byte-parity invariant: ZIPs are compared byte-for-byte against the working
+# tree by scripts/check_sync.py, so every checkout must produce identical bytes
+# on every platform. Force LF for all text; keep binaries untouched.
+* text=auto eol=lf
+*.zip -text
+*.png -text
+*.ico -text
+*.pdf -text
