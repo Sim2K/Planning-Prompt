@@ -27,11 +27,14 @@ SHARED_FILES = [
     "LICENSE",
     "assets/feature-plan-template.md",
     "assets/runtime-semantics-addendum.md",
+    "assets/solutions-architect-addendum.md",
     "assets/example-plan.md",
     "references/planning-quality-standard.md",
     "references/runtime-semantics-audit.md",
+    "references/solutions-architect.md",
     "scripts/validate_plan.py",
     "scripts/validate_runtime_semantics.py",
+    "scripts/validate_solutions_architect.py",
 ]
 
 ZIPS = {

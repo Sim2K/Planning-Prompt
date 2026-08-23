@@ -159,11 +159,14 @@ Keep these files byte-identical across the Claude and Codex packages (enforced b
 - `LICENSE`
 - `assets/feature-plan-template.md`
 - `assets/runtime-semantics-addendum.md`
+- `assets/solutions-architect-addendum.md`
 - `assets/example-plan.md`
 - `references/planning-quality-standard.md`
 - `references/runtime-semantics-audit.md`
+- `references/solutions-architect.md`
 - `scripts/validate_plan.py`
 - `scripts/validate_runtime_semantics.py`
+- `scripts/validate_solutions_architect.py`
 
 Platform-specific wording may differ in `SKILL.md`, but both must declare the same
 `version:` in frontmatter. Codex additionally owns `agents/openai.yaml`. Claude additionally
@@ -208,6 +211,8 @@ python claude-code/robust-feature-planner/scripts/validate_plan.py --self-test
 python openai-codex/robust-feature-planner/scripts/validate_plan.py --self-test
 python claude-code/robust-feature-planner/scripts/validate_runtime_semantics.py --self-test
 python openai-codex/robust-feature-planner/scripts/validate_runtime_semantics.py --self-test
+python claude-code/robust-feature-planner/scripts/validate_solutions_architect.py --self-test
+python openai-codex/robust-feature-planner/scripts/validate_solutions_architect.py --self-test
 python claude-code/robust-feature-planner/scripts/validate_plan.py claude-code/robust-feature-planner/assets/example-plan.md --strict
 python openai-codex/robust-feature-planner/scripts/validate_plan.py openai-codex/robust-feature-planner/assets/example-plan.md --strict
 python scripts/check_sync.py

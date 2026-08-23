@@ -4,7 +4,7 @@
 
 #### Created through a collaboration between **Z.ai GLM 5.2** × **Codex 5.5** and **Claude Code - Fable 5** used for review.
 
-#### 🆕 **v2.0.4** - plans now save as Veedence-branded files, validate on the spot, and stamp the planner version - see the [changelog](./claude-code/robust-feature-planner/CHANGELOG.md)
+#### 🆕 **v3.0.0** - new opt-in **Solutions Architect Pass**: decompose the winning design into its real sub-decisions, compare evidence-checked options for each, and record why the losers lost - see the [changelog](./claude-code/robust-feature-planner/CHANGELOG.md)
 
 ### 🌐 Check it out!→ **[plannerskill.veedence.com](https://plannerskill.veedence.com/)** - the full interactive experience.
 
@@ -39,6 +39,7 @@ Turn vague feature requests into evidence-grounded, production-ready implementat
 | 🧠 | [Prompt vs. Skill - Which Should I Use?](#-prompt-vs-skill--which-should-i-use) | 🛡️ | [What It Enforces](#%EF%B8%8F-what-it-enforces) |
 | ⚡ | [Claude Code Skill](#-claude-code-skill) | 🤖 | [Codex Skill](#-openai-codex-skill) |
 | ✅ | [The Plan Validator](#-the-plan-validator) | 🧬 | [Runtime Semantics Audit](#-runtime-semantics-audit) |
+| 🧩 | [Solutions Architect Pass](#-solutions-architect-pass) | | |
 | ❓ | [FAQ](#-faq) | 📁 | [Repo Structure](#-repo-structure) |
 | 🗺️ | [The Output Blueprint](#%EF%B8%8F-the-output-blueprint) | 🌐 | [Update Page](https://plannerskill.veedence.com/runtime-semantics.html) |
 
@@ -269,6 +270,21 @@ Read the website update page: **[Runtime Semantics Audit](https://plannerskill.v
 
 ---
 
+## 🧩 Solutions Architect Pass
+
+The Solutions Architect Pass is the second opt-in arm (default **OFF**, activated with `+solutions-architect`). The base planner compares three architecture branches at the top level - but once a branch wins, the decisions that actually sink implementations live *inside* it: how a new table is shaped, who is allowed to perform a write, whether a value is snapshotted or resolved, what scope a setting lives at. Normally those get written as prose, with the alternatives never enumerated.
+
+When the switch is ON, the planner adds:
+
+- **Decision Table:** every contested sub-decision (`D1`, `D2`, …) with the chosen option, the losing options **and why they lost**, the evidence cited, and a confidence label.
+- **Option Analyses:** three genuinely different options per decision, evidence-checked against the actual code, plus a "what would flip this" line for each winner.
+- **Re-Verified Facts:** the load-bearing facts behind the decisions, independently re-checked (by a fresh-context subagent where the platform supports one) and recorded as Confirmed / Contradicted / Unverified.
+- **Extra validation:** `validate_solutions_architect.py`, or `validate_plan.py --architect`, checks the Decision Record is structurally complete.
+
+Like the runtime arm, the planner notices when a winning design quietly settles several contested choices and offers the pass once, in plain language, without ever blocking the plan. Read the website page: **[Solutions Architect Pass](https://plannerskill.veedence.com/solutions-architect.html)**. And the same honesty rule applies: a complete Decision Record means the options were **enumerated and evidence-checked, not that the winner is proven correct**.
+
+---
+
 ## 🗺️ The Output Blueprint
 
 Every plan follows the same predictable structure. Implementation tasks use markdown checkboxes (`- [ ]`) - ready to drop into a tracker, PR, or project board.
@@ -316,7 +332,7 @@ Both skills ship a Python validator (`scripts/validate_plan.py`, Python 3.8+) th
 - ⚠️ Missing stable IDs (`A#`/`R#`/`P#.#`) and risk IDs that no task ever references
 - 💡 A note when strong runtime-risk signals (isolation levels, locks, race conditions) appear without a Runtime Semantics Audit
 
-`--runtime` merges the Runtime Semantics checks into the same output and JSON payload, and a worked example plan that passes `--strict` ships in each package ([`assets/example-plan.md`](./claude-code/robust-feature-planner/assets/example-plan.md)).
+`--runtime` merges the Runtime Semantics checks into the same output and JSON payload, `--architect` does the same for the Solutions Architect Decision Record, and a worked example plan that passes `--strict` ships in each package ([`assets/example-plan.md`](./claude-code/robust-feature-planner/assets/example-plan.md)).
 
 ```bash
 # Validate a plan (treat coverage warnings as errors with --strict)
@@ -324,6 +340,9 @@ python scripts/validate_plan.py path/to/plan.md --strict
 
 # Validate the optional Runtime Semantics Audit too
 python scripts/validate_plan.py path/to/plan.md --strict --runtime
+
+# Validate the optional Solutions Architect Decision Record too
+python scripts/validate_plan.py path/to/plan.md --strict --architect
 
 # Validate only the Runtime Semantics Audit addendum
 python scripts/validate_runtime_semantics.py path/to/plan.md --strict
@@ -413,6 +432,7 @@ Planning Prompt/
 ├── Veedence.co.uk-Robust-Feature-Planning-Prompt.md   ← 📝 the raw prompt (any LLM)
 ├── index.html                                 ← 🌐 homepage entry + SEO metadata
 ├── runtime-semantics.html                     ← 🧬 Runtime Semantics update page
+├── solutions-architect.html                   ← 🧩 Solutions Architect Pass page
 ├── how-to-use.html                            ← 📖 copy-paste invocation guide page
 ├── support.html                               ← ☕🍫 About Simeon & optional support page
 ├── package.json                               ← Vite, TypeScript, GSAP and Lenis
@@ -441,10 +461,13 @@ Planning Prompt/
 │       ├── assets/feature-plan-template.md    ← the 20-section plan skeleton
 │       ├── assets/example-plan.md             ← worked example plan (passes --strict)
 │       ├── assets/runtime-semantics-addendum.md ← optional Runtime Semantics output addendum
+│       ├── assets/solutions-architect-addendum.md ← optional Decision Record output addendum
 │       ├── references/planning-quality-standard.md  ← discovery matrix + review gates
 │       ├── references/runtime-semantics-audit.md    ← optional Runtime Semantics method
+│       ├── references/solutions-architect.md        ← optional Solutions Architect method
 │       ├── scripts/validate_plan.py           ← structural plan validator
-│       └── scripts/validate_runtime_semantics.py ← optional Runtime Semantics validator
+│       ├── scripts/validate_runtime_semantics.py ← optional Runtime Semantics validator
+│       └── scripts/validate_solutions_architect.py ← optional Decision Record validator
 │
 ├── openai-codex/                              ← 🤖 OpenAI Codex skill package
 │   └── robust-feature-planner/
@@ -455,10 +478,13 @@ Planning Prompt/
 │       ├── assets/feature-plan-template.md
 │       ├── assets/example-plan.md
 │       ├── assets/runtime-semantics-addendum.md
+│       ├── assets/solutions-architect-addendum.md
 │       ├── references/planning-quality-standard.md
 │       ├── references/runtime-semantics-audit.md
+│       ├── references/solutions-architect.md
 │       ├── scripts/validate_plan.py
-│       └── scripts/validate_runtime_semantics.py
+│       ├── scripts/validate_runtime_semantics.py
+│       └── scripts/validate_solutions_architect.py
 │
 ├── scripts/
 │   ├── check_sync.py                          ← verifies both packages + ZIPs stay identical

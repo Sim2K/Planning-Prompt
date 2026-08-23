@@ -1,7 +1,7 @@
 ---
 name: robust-feature-planner
 description: Create, review, and improve evidence-grounded, production-ready software feature implementation plans without changing the project. Use when Codex is asked to plan a feature, turn a vague request into an implementation blueprint, compare architecture options, assess regression risk, map APIs/data/UI/operations, review an existing feature plan, or produce phased checklist tasks with validation and rollback coverage.
-version: 2.0.4
+version: 3.0.0
 ---
 
 # Robust Feature Planner
@@ -97,7 +97,7 @@ Declare the plan depth tier (Small / Standard / Critical) in Document Control wi
 justification, and right-size conditional sections accordingly - never drop a heading. Include
 the line `Attribution: Robust Feature Planner by Simeon Williams - Veedence.co.uk` in Document
 Control and keep it intact if the plan is shared with anyone else. Also include the line
-`Planner: robust-feature-planner v2.0.4 - plannerskill.veedence.com` in Document Control so every
+`Planner: robust-feature-planner v3.0.0 - plannerskill.veedence.com` in Document Control so every
 plan names the planner version that produced it (this version string is kept in lockstep with the
 frontmatter by the repo's sync check). Give every
 assumption, risk, and task a stable ID (`A1`, `R1`, `P1.1`) and reference the IDs a task resolves,
@@ -187,6 +187,77 @@ When ON:
    where a fundamentals-strong human review is non-optional before merge.
 <!-- END: Runtime Semantics Audit switch -->
 
+<!-- BEGIN: Solutions Architect Pass - detect & offer (always on, never auto-runs) -->
+### 6c. Offer the Solutions Architect Pass (only when not already ON)
+
+If the switch is OFF, scan discovery and the branch comparison for design-depth
+signals: a new table, queue, or contract whose shape, scope, or granularity could
+reasonably go more than one way; writes into another module's tables, permissions,
+or events; several interlocking choices settled at once (schema shape, permission
+model, scheduling, seeding); repository history showing a similar choice later
+reversed or migrated; or CI/migration gates that could force a different product
+decision than the obvious one.
+
+If any appear, deliver the normal plan as usual, then append a one-time offer in
+plain language - translate the risk, do not name the jargon, and say why it's being
+offered without being asked. Example:
+
+> **Optional design deep-dive.** While planning this I noticed <plain reason, e.g.
+> "the winning design quietly settles several smaller choices - how the new table
+> is shaped, who is allowed to write to it, and when the audience is decided - and
+> each could be built more than one way">. My plan picks one way for each, but only
+> the top-level design was compared against alternatives. I can run an optional
+> Solutions Architect Pass: break the chosen design into its individual decisions,
+> compare real options for each against your actual code, double-check the facts
+> each choice rests on, and give you a Decision Record showing why every losing
+> option lost - so nobody re-litigates a settled choice later. It's off by default
+> and I haven't run it. Want me to? - reply `+solutions-architect` or "yes, run it".
+
+Offer once only. Never block or delay the plan to ask. If the user accepts, treat
+the switch as ON and run step 6d against the plan already delivered. If declined or
+ignored, continue normally and do not raise it again. If this offer and the 6a
+runtime offer both apply, present them together as one short paragraph, not two.
+<!-- END: Solutions Architect Pass - detect & offer -->
+
+<!-- BEGIN: Solutions Architect Pass switch (optional, default OFF) -->
+### 6d. Solutions Architect Pass (only if switch is ON)
+
+This step runs **only** when the request contains an activation token
+(`+solutions-architect`, `SOLUTIONS-ARCHITECT: ON`), an equivalent phrase
+("solutions architect", "decision record", "decompose the design", "compare options
+for every decision", "why did the alternatives lose"), or the user accepted the 6c
+offer. If none apply, skip this step entirely - produce the normal plan with no
+changes.
+
+When ON:
+
+1. Read `references/solutions-architect.md` and follow its prime directive:
+   decompose the chosen branch into named sub-decisions, compare genuine options
+   for each against project evidence, re-verify the load-bearing facts
+   independently, and record why the losers lost. Chosen is not correct.
+2. Timing: when the switch was ON before drafting, run the pass between steps 4
+   and 5 so the decomposition shapes the draft. When activated later (including
+   from the 6c offer), run it against the delivered plan; if a decision flips,
+   amend the plan, bump its version, and record the change in Document Control.
+3. Where the platform supports subagents, prefer a fresh-context agent to
+   re-verify the facts the decisions rest on - a checker who did not write the
+   brief. Otherwise perform an explicit adversarial re-read inline. The pass is
+   read-only either way.
+4. Append the Decision Record using `assets/solutions-architect-addendum.md`: the
+   **Decision Table** (stable `D#` IDs), the **Option Analyses** (losers with
+   cited rejection reasons, winners with a "what would flip this" line), and the
+   **Re-Verified Facts** (Confirmed / Contradicted / Unverified).
+5. Reproduce the standing caveat verbatim. A complete Decision Record means the
+   options were enumerated and evidence-checked, not that the winner is proven
+   correct.
+6. Reference every `D#` from the plan body (architecture, design rules, tasks, or
+   risks) and apply the added review gates from the reference. If saving Markdown,
+   also run:
+   `python scripts/validate_solutions_architect.py path/to/plan.md --strict`
+7. In the final delivery note, name any decision resting on `Contradicted` or
+   `Unverified` facts as open before implementation.
+<!-- END: Solutions Architect Pass switch -->
+
 ### 7. Deliver
 
 Return the completed plan, not the private working maps. End with a short final review note naming:
@@ -218,7 +289,8 @@ When the user accepts (or the preference is set):
 2. If Python 3.8+ is available, immediately run the bundled validator on the saved file:
    `python scripts/validate_plan.py <repo>/plans/<feature-slug>.md --strict` - and when the
    Runtime Semantics Audit ran, also `validate_plan.py --runtime` (or
-   `validate_runtime_semantics.py`). If Python is unavailable, say so and apply the review
+   `validate_runtime_semantics.py`), and when the Solutions Architect Pass ran, also
+   `validate_plan.py --architect` (or `validate_solutions_architect.py`). If Python is unavailable, say so and apply the review
    gates manually instead.
 3. Report back in one short block: the exact file location, and the validator's real output —
    never a summary that hides warnings.
@@ -237,6 +309,9 @@ Control):
   the plan is shared with anyone else.
 - When the Runtime Semantics Audit ran, its full addendum (Invariants Ledger, Reviewer Hotlist,
   and the standing caveat) must be included in the saved file as well, never chat-only.
+- When the Solutions Architect Pass ran, its full Decision Record (Decision Table, Option
+  Analyses, Re-Verified Facts, and the standing caveat) must be included in the saved file
+  as well, never chat-only.
 - A closing branded section after the Final Review Note, separated by a horizontal rule, titled
   `## 🧭 About This Plan - Robust Feature Planner by Veedence`, containing exactly:
   - The paragraph: "Every plan follows the same predictable structure. Implementation tasks use

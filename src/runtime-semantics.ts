@@ -32,6 +32,7 @@ app.innerHTML = `
         <a href="./index.html#why" data-nav-link>Why plan first</a>
         <a href="./index.html#method" data-nav-link>The method</a>
         <a href="./runtime-semantics.html" class="is-active" aria-current="page" data-nav-link>Runtime audit</a>
+        <a href="./solutions-architect.html" data-nav-link>Architect pass</a>
         <a href="./how-to-use.html" data-nav-link>How to use</a>
         <a href="./index.html#toolkit" data-nav-link>Get the toolkit</a>
       </nav>
@@ -71,9 +72,10 @@ app.innerHTML = `
       <a href="./index.html#why" data-nav-link><span>01</span> Why plan first</a>
       <a href="./index.html#method" data-nav-link><span>02</span> The method</a>
       <a href="./runtime-semantics.html" data-nav-link><span>03</span> Runtime audit</a>
-      <a href="./how-to-use.html" data-nav-link><span>04</span> How to use</a>
-      <a href="./index.html#toolkit" data-nav-link><span>05</span> Get the toolkit</a>
-      <a href="mailto:hello@Veedence.co.uk"><span>06</span> Talk to Veedence</a>
+      <a href="./solutions-architect.html" data-nav-link><span>04</span> Architect pass</a>
+      <a href="./how-to-use.html" data-nav-link><span>05</span> How to use</a>
+      <a href="./index.html#toolkit" data-nav-link><span>06</span> Get the toolkit</a>
+      <a href="mailto:hello@Veedence.co.uk"><span>07</span> Talk to Veedence</a>
     </nav>
   </header>
 
@@ -99,8 +101,8 @@ app.innerHTML = `
             <a class="button button--primary" href="https://github.com/Sim2K/Planning-Prompt" target="_blank" rel="noreferrer">
               Get the updated toolkit ${externalIcon}
             </a>
-            <a class="button button--text" href="./index.html#runtime-update">
-              Back to the update <span aria-hidden="true">↩</span>
+            <a class="button button--text" href="./solutions-architect.html">
+              Meet the Solutions Architect Pass <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
@@ -207,6 +209,7 @@ app.innerHTML = `
       <div class="site-footer__links">
         <a href="https://github.com/Sim2K/Planning-Prompt" target="_blank" rel="noreferrer">GitHub</a>
         <a href="./runtime-semantics.html">Runtime audit</a>
+        <a href="./solutions-architect.html">Architect pass</a>
         <a href="./how-to-use.html">How to use</a>
         <a href="https://ko-fi.com/sim2k" target="_blank" rel="noreferrer">Ko-fi</a>
         <a href="mailto:hello@Veedence.co.uk">Contact</a>

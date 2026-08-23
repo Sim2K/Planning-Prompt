@@ -1,6 +1,6 @@
 # Veedence Robust Feature Implementation Planning Prompt
 
-**Version 2.0.4 - HUGE upgrade.**
+**Version 3.0.0 - adds the optional Solutions Architect Pass.**
 
 Use this prompt when you want an AI coding assistant to produce a senior-level implementation plan for any feature in any project. It is designed to force careful discovery, modular architecture, failure planning, API contract thinking, UI/UX planning, rollout safety, and validation without depending on a specific repository, framework, database, or internal runbook.
 
@@ -24,6 +24,13 @@ Optional runtime audit switch:
 OFF   <!-- set to ON to force the runtime-semantics audit (thread safety,
            memory/resource ownership, transaction isolation, ordering) -->
 </RUNTIME_AUDIT>
+
+Optional solutions-architect switch:
+<SOLUTIONS_ARCHITECT>
+OFF   <!-- set to ON to force the solutions-architect pass (decompose the chosen
+           architecture into sub-decisions, compare real options for each,
+           re-verify the facts, record why the losers lost) -->
+</SOLUTIONS_ARCHITECT>
 
 Core instructions:
 - Do not make code, database, infrastructure, or configuration changes unless explicitly asked.
@@ -55,7 +62,7 @@ Required plan quality:
 - Give every assumption, risk, and task a stable ID (A1…, R1…, P1.1…) and make tasks reference the assumption or risk they resolve, e.g. "(resolves A1, R2)", so coverage is traceable. A risk no task, test, or explicit non-goal references is an uncovered risk.
 - Record the plan version, a change log, and the evidence baseline (commit, branch, or inspection date) in Document Control. If implementation starts after the baseline has moved, re-verify the Observed findings the chosen architecture depends on first.
 - Include the line "Attribution: Robust Feature Planner by Simeon Williams - Veedence.co.uk" in Document Control and keep it intact if the plan is shared with anyone else.
-- Include the line "Planner: Robust Feature Planner v2.0.4 (raw prompt) - plannerskill.veedence.com" in Document Control so every plan names the planner version that produced it.
+- Include the line "Planner: Robust Feature Planner v3.0.0 (raw prompt) - plannerskill.veedence.com" in Document Control so every plan names the planner version that produced it.
 - Plan performance, capacity, and cost where relevant: latency budgets, expected data growth, quota and rate-limit exhaustion, and the cost ceiling of expensive dependencies such as external APIs, storage, or model calls.
 - The feature must be modular. Each module should own one responsibility and communicate through typed helpers, narrow APIs, events, queues, durable records, or documented contracts.
 - The feature must not block or regress existing critical flows. Any optional integration, external call, analytics path, webhook, worker, sync job, or UI enhancement must be able to fail without breaking core product behavior.
@@ -154,6 +161,47 @@ number"), notes the audit is optional and not yet run, and tells the user to rep
 `+runtime-audit` to run it. Offer once; never block the plan; if accepted, run the
 block above against the plan you delivered.
 
+IF <SOLUTIONS_ARCHITECT> is ON:
+Decompose the chosen architecture branch into its real sub-decisions - the choices
+inside the winning design that would force a schema, contract, permission, or data
+migration if chosen wrong (data shape and granularity, snapshot vs. resolve timing,
+write ownership across module boundaries, seed vs. code defaults, scope level,
+permission model, delivery/scheduling, integration seam). Give each a stable ID
+(D1, D2, ...). For each, enumerate three genuinely different options (two only with
+a stated constraint), validate every option against project evidence actually read,
+deliberately join facts across modules (a write policy vs. who actually holds the
+permission; a CI gate vs. the cost of a new permission; an event a design wants to
+consume vs. whether anything publishes it), and mine the repository's own history
+for precedent. Before deciding, re-open the files behind every load-bearing fact
+instead of trusting your earlier notes, and record each spot-check as Confirmed,
+Contradicted, or Unverified - a Contradicted fact re-opens every decision resting
+on it. Then append a "Solutions Architect Decision Record" section: (a) a Decision
+Table - columns: ID | Sub-decision | Chosen option | Losing options -> why they
+lost | Evidence | Confidence (Observed/Inferred/Unknown); (b) per-decision Option
+Analyses naming each option, the cited reason every loser lost, and "what would
+flip this" for the winner; and (c) a Re-Verified Facts table - columns: Fact |
+Re-checked where | Result (Confirmed/Contradicted/Unverified) | Decisions affected.
+Reference every D# from the plan body (architecture, design rules, tasks, or
+risks). Reproduce this caveat verbatim: "A complete Decision Record means the
+options were enumerated and evidence-checked, not that the winner is proven
+correct." Never pad the record with uncontested choices, never reject an option
+without a cited reason, and name any decision resting on Contradicted or
+Unverified facts as open in the final note.
+IF <SOLUTIONS_ARCHITECT> is OFF: ignore this block entirely.
+
+ALWAYS (even when OFF): if the winning design quietly settles several contested
+choices - a new table, queue, or contract whose shape, scope, or granularity could
+go more than one way; writes into another module's tables or permissions; several
+interlocking schema/permission/scheduling/seeding choices; repo history showing a
+similar choice later reversed; or CI/migration gates that could force a different
+product decision - then after the normal plan add a one-time, plain-language offer
+that says what you noticed and why it matters (e.g. "the design hides several
+smaller choices that could each be built more than one way, and nobody will see why
+the alternatives lost"), notes the pass is optional and not yet run, and tells the
+user to reply `+solutions-architect` to run it. Offer once; never block the plan;
+if accepted, run the block above against the plan you delivered. If this offer and
+the runtime-audit offer both apply, present them together as one short paragraph.
+
 End with a short note naming what was reviewed and what validation is still required before implementation.
 
 After delivering the complete reviewed plan, state: "The plan is complete and awaiting your approval. No implementation has started."
@@ -163,7 +211,8 @@ in the same message as the plan - to save it to `<repo>/plans/<feature-slug>.md`
 slug; create `plans/` if missing). This file and folder are the only write this prompt permits, and
 only after the user accepts or a standing always-save preference exists. On acceptance: write the
 file; if Python 3.8+ is available and the validator scripts are present, immediately run
-`python scripts/validate_plan.py <path> --strict` (add `--runtime` when the runtime audit ran) and
+`python scripts/validate_plan.py <path> --strict` (add `--runtime` when the runtime audit ran, `--architect` when the
+solutions-architect pass ran) and
 report the exact file location plus the validator's real output - if Python or the scripts are
 unavailable, say so and apply the review checks manually. The first time a file is saved, ask once
 whether to commit an always-save preference to memory (or the platform's rules file) so future
@@ -171,7 +220,8 @@ plans are saved without asking; respect the answer thereafter. The saved file mu
 branding: a blockquote banner above the H1 —
 `> 🧭 **Robust Feature Planner** - by Simeon Williams · [Veedence.co.uk](https://veedence.co.uk) · [plannerskill.veedence.com](https://plannerskill.veedence.com/)`
 — the Attribution line in Document Control, the full Runtime Semantics Audit addendum when it ran
-(never chat-only), and a closing section after the Final Review Note titled
+(never chat-only), the full Solutions Architect Decision Record when the pass ran (never
+chat-only), and a closing section after the Final Review Note titled
 "## 🧭 About This Plan - Robust Feature Planner by Veedence" containing exactly: the paragraph
 "Every plan follows the same predictable structure. Implementation tasks use markdown checkboxes
 (`- [ ]`) - ready to drop into a tracker, PR, or project board."; the line "📖 Expand the
@@ -224,3 +274,4 @@ Use this checklist to verify that a generated plan has the same quality bar as t
 - [ ] Names the existing tests guarding touched flows and flags untested invariants.
 - [ ] Ends with a Final Review Note naming inspected evidence and remaining verification.
 - [ ] Offers or runs the Runtime Semantics Audit only under the switch rules.
+- [ ] Offers or runs the Solutions Architect Pass only under the switch rules.

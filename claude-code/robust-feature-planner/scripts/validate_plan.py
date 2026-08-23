@@ -332,6 +332,21 @@ def merge_runtime_checks(result: Result, text: str) -> None:
     result.warnings.extend("Runtime: " + message for message in runtime_warnings)
 
 
+def merge_architect_checks(result: Result, text: str) -> None:
+    """Merge Solutions Architect Decision Record checks into the base result."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    try:
+        from validate_solutions_architect import validate as validate_architect
+    except ImportError as error:
+        result.errors.append(
+            f"Architect: validate_solutions_architect.py could not be loaded ({error})."
+        )
+        return
+    architect_errors, architect_warnings = validate_architect(text)
+    result.errors.extend("Architect: " + message for message in architect_errors)
+    result.warnings.extend("Architect: " + message for message in architect_warnings)
+
+
 def make_self_test_plan() -> str:
     bodies = {
         "Document Control": (
@@ -569,6 +584,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Also validate the Runtime Semantics Audit addendum (merged into this output)",
     )
+    parser.add_argument(
+        "--architect",
+        action="store_true",
+        help="Also validate the Solutions Architect Decision Record (merged into this output)",
+    )
     parser.add_argument("--self-test", action="store_true", help="Run built-in validator tests")
     return parser.parse_args()
 
@@ -589,6 +609,8 @@ def main() -> int:
     result = validate_text(text, strict=False)
     if args.runtime:
         merge_runtime_checks(result, text)
+    if args.architect:
+        merge_architect_checks(result, text)
     if args.strict and result.warnings:
         result.errors.extend(f"Strict: {warning}" for warning in result.warnings)
         result.warnings.clear()

@@ -1744,3 +1744,199 @@
 .button--kofi:hover {
   box-shadow: 0 16px 38px rgba(255, 94, 91, 0.3);
 }
+
+/* Solutions Architect page */
+.sa-visual {
+  position: relative;
+}
+
+.sa-console {
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, var(--surface-raised), var(--surface-soft));
+  box-shadow: var(--shadow);
+}
+
+.sa-console__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-faint);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sa-console__foot {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.85rem 1.2rem;
+  border-top: 1px solid var(--line);
+  background: var(--safe-bg);
+}
+
+.sa-console__foot span {
+  color: var(--text-faint);
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+}
+
+.sa-console__foot p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.8rem;
+}
+
+.sa-console__foot strong {
+  color: var(--green);
+}
+
+.sa-tree {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 1.1rem 0.9rem 0.6rem;
+}
+
+.sa-tree text {
+  fill: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
+.sa-tree__root rect,
+.sa-tree__node rect {
+  fill: var(--surface);
+  stroke: var(--line-strong);
+}
+
+.sa-tree__root text {
+  fill: var(--text);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+}
+
+.sa-tree__line {
+  stroke: var(--line-strong);
+  stroke-dasharray: 140;
+  stroke-dashoffset: 0;
+  animation: sa-draw 1.6s var(--ease) both;
+}
+
+.sa-tree__win {
+  fill: var(--green);
+  stroke: none;
+  animation: sa-win-pulse 3.2s ease-in-out infinite;
+}
+
+.sa-tree__lost circle {
+  fill: none;
+  stroke: var(--line-strong);
+}
+
+.sa-tree__lost path {
+  stroke: var(--red);
+  stroke-width: 1.6;
+  opacity: 0.75;
+}
+
+.sa-tree__legend text {
+  fill: var(--text-faint);
+  font-size: 9px;
+}
+
+@keyframes sa-draw {
+  from {
+    stroke-dashoffset: 140;
+  }
+}
+
+@keyframes sa-win-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.sa-note {
+  animation: sa-float 6s ease-in-out infinite;
+}
+
+.sa-note--fact {
+  top: -1.4rem;
+  right: -0.9rem;
+}
+
+.sa-note--fact span {
+  color: var(--green);
+}
+
+.sa-note--loser {
+  bottom: -1.5rem;
+  left: -1.1rem;
+  animation-delay: -3s;
+}
+
+.sa-note--loser span {
+  color: var(--red);
+}
+
+.sa-note span {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@keyframes sa-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.sa-card {
+  position: relative;
+}
+
+.sa-glyph {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+  width: 44px;
+  height: 44px;
+  fill: none;
+  stroke: var(--text-faint);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sa-glyph__accent {
+  stroke: var(--green);
+}
+
+.sa-glyph__win {
+  fill: var(--green);
+  stroke: none;
+}
+
+.sa-glyph__lost {
+  stroke: var(--red);
+  opacity: 0.8;
+}

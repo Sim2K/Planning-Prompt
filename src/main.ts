@@ -39,6 +39,7 @@ app.innerHTML = `
         <a href="#why" data-nav-link>Why plan first</a>
         <a href="#method" data-nav-link>The method</a>
         <a href="./runtime-semantics.html" data-nav-link>Runtime audit</a>
+        <a href="./solutions-architect.html" data-nav-link>Architect pass</a>
         <a href="./how-to-use.html" data-nav-link>How to use</a>
         <a href="#toolkit" data-nav-link>Get the toolkit</a>
       </nav>
@@ -78,9 +79,10 @@ app.innerHTML = `
       <a href="#why" data-nav-link><span>01</span> Why plan first</a>
       <a href="#method" data-nav-link><span>02</span> The method</a>
       <a href="./runtime-semantics.html" data-nav-link><span>03</span> Runtime audit</a>
-      <a href="./how-to-use.html" data-nav-link><span>04</span> How to use</a>
-      <a href="#toolkit" data-nav-link><span>05</span> Get the toolkit</a>
-      <a href="mailto:hello@Veedence.co.uk"><span>06</span> Talk to Veedence</a>
+      <a href="./solutions-architect.html" data-nav-link><span>04</span> Architect pass</a>
+      <a href="./how-to-use.html" data-nav-link><span>05</span> How to use</a>
+      <a href="#toolkit" data-nav-link><span>06</span> Get the toolkit</a>
+      <a href="mailto:hello@Veedence.co.uk"><span>07</span> Talk to Veedence</a>
     </nav>
   </header>
 
@@ -245,7 +247,7 @@ app.innerHTML = `
     <section class="runtime-update section" id="runtime-update" aria-labelledby="runtime-update-title">
       <div class="container runtime-update__layout">
         <div class="runtime-update__copy" data-reveal>
-          <p class="eyebrow">Update · Optional deeper check</p>
+          <p class="eyebrow">Update · Optional deeper checks</p>
           <h2 id="runtime-update-title">Runtime Semantics Audit</h2>
           <p>
             Some plans look right on paper, then fail when two requests land together, a queue retries,
@@ -254,6 +256,9 @@ app.innerHTML = `
           </p>
           <a class="button button--primary" href="./runtime-semantics.html">
             Read about the update <span aria-hidden="true">↗</span>
+          </a>
+          <a class="button button--text" href="./solutions-architect.html">
+            New: the Solutions Architect Pass <span aria-hidden="true">↗</span>
           </a>
         </div>
         <div class="runtime-update__panel" data-reveal aria-label="Runtime Semantics Audit summary">
@@ -484,6 +489,7 @@ app.innerHTML = `
       <div class="site-footer__links">
         <a href="https://github.com/Sim2K/Planning-Prompt" target="_blank" rel="noreferrer">GitHub</a>
         <a href="./runtime-semantics.html">Runtime audit</a>
+        <a href="./solutions-architect.html">Architect pass</a>
         <a href="./how-to-use.html">How to use</a>
         <a href="https://ko-fi.com/sim2k" target="_blank" rel="noreferrer">Ko-fi</a>
         <a href="mailto:hello@Veedence.co.uk">Contact</a>

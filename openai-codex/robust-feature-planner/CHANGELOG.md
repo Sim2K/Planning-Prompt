@@ -1,5 +1,38 @@
 # Changelog - Robust Feature Planner
 
+## 3.0.0 - Solutions Architect Pass (2026-08-23)
+
+### Added
+
+- **Solutions Architect Pass** - a second opt-in arm alongside the Runtime Semantics Audit,
+  activated with `+solutions-architect` (default OFF). Where the base skill compares three
+  architecture branches at the top level, this pass decomposes the *winning* branch into its
+  real sub-decisions (`D1`, `D2`, ...), compares genuine options for each against project
+  evidence, independently re-verifies the load-bearing facts the decisions rest on
+  (Confirmed / Contradicted / Unverified - by a fresh-context subagent where the platform
+  supports one), and appends a Decision Record: a Decision Table with "why the losers lost",
+  per-decision Option Analyses with a "what would flip this" line, and a Re-Verified Facts
+  ledger.
+- Like the runtime arm, the planner detects when a winning design hides several contested
+  choices (a new table whose shape or scope could go more than one way, writes into another
+  module's tables or permissions, interlocking schema/permission/scheduling/seeding choices,
+  repo history of a reversed decision, CI gates forcing product decisions) and offers the
+  pass once, in plain language, without ever blocking the plan.
+- New shared files in both packages: `references/solutions-architect.md`,
+  `assets/solutions-architect-addendum.md`, and `scripts/validate_solutions_architect.py`
+  (structural validator with `--self-test`; the standing caveat: a complete Decision Record
+  means the options were enumerated and evidence-checked, not that the winner is proven
+  correct).
+- `validate_plan.py --architect` merges the Decision Record checks into the base report and
+  JSON payload, mirroring `--runtime`. Saved plan files must include the full Decision Record
+  when the pass ran, never chat-only.
+- The raw prompt gains the matching `<SOLUTIONS_ARCHITECT>` switch, gated instruction block,
+  and always-on offer clause.
+- The website gains a dedicated Solutions Architect Pass page
+  (https://plannerskill.veedence.com/solutions-architect.html) with an animated decision-tree
+  visual, activation tokens, and cross-links from every page, plus copy-ready invocations on
+  the how-to-use page.
+
 ## 2.0.4 - version reporting and one-sentence install (2026-08-18)
 
 ### Added

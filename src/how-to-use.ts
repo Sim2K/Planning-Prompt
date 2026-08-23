@@ -43,6 +43,7 @@ app.innerHTML = `
         <a href="./index.html#why" data-nav-link>Why plan first</a>
         <a href="./index.html#method" data-nav-link>The method</a>
         <a href="./runtime-semantics.html" data-nav-link>Runtime audit</a>
+        <a href="./solutions-architect.html" data-nav-link>Architect pass</a>
         <a href="./how-to-use.html" class="is-active" aria-current="page" data-nav-link>How to use</a>
         <a href="./index.html#toolkit" data-nav-link>Get the toolkit</a>
       </nav>
@@ -82,9 +83,10 @@ app.innerHTML = `
       <a href="./index.html#why" data-nav-link><span>01</span> Why plan first</a>
       <a href="./index.html#method" data-nav-link><span>02</span> The method</a>
       <a href="./runtime-semantics.html" data-nav-link><span>03</span> Runtime audit</a>
-      <a href="./how-to-use.html" data-nav-link><span>04</span> How to use</a>
-      <a href="./index.html#toolkit" data-nav-link><span>05</span> Get the toolkit</a>
-      <a href="mailto:hello@Veedence.co.uk"><span>06</span> Talk to Veedence</a>
+      <a href="./solutions-architect.html" data-nav-link><span>04</span> Architect pass</a>
+      <a href="./how-to-use.html" data-nav-link><span>05</span> How to use</a>
+      <a href="./index.html#toolkit" data-nav-link><span>06</span> Get the toolkit</a>
+      <a href="mailto:hello@Veedence.co.uk"><span>07</span> Talk to Veedence</a>
     </nav>
   </header>
 
@@ -133,7 +135,8 @@ app.innerHTML = `
             <div><dt>Claude Code</dt><dd><code>/robust-feature-planner</code></dd></div>
             <div><dt>OpenAI Codex</dt><dd><code>$robust-feature-planner</code></dd></div>
             <div><dt>Any LLM</dt><dd>Paste the raw prompt</dd></div>
-            <div><dt>Deeper check</dt><dd><code>+runtime-audit</code></dd></div>
+            <div><dt>Runtime check</dt><dd><code>+runtime-audit</code></dd></div>
+            <div><dt>Design deep-dive</dt><dd><code>+solutions-architect</code></dd></div>
           </dl>
         </article>
       </div>
@@ -214,7 +217,7 @@ app.innerHTML = `
         <div class="copy-grid copy-grid--single">
           ${copyBlock(
             "The placeholders to fill",
-            "&lt;FEATURE_REQUEST&gt;\nDescribe the feature here.\n&lt;/FEATURE_REQUEST&gt;\n\n&lt;PROJECT_CONTEXT&gt;\nStack, goals, constraints, roles, services, deadlines, or files to inspect.\n(Leave blank to let the AI discover the project itself.)\n&lt;/PROJECT_CONTEXT&gt;\n\n&lt;RUNTIME_AUDIT&gt;\nOFF\n&lt;/RUNTIME_AUDIT&gt;",
+            "&lt;FEATURE_REQUEST&gt;\nDescribe the feature here.\n&lt;/FEATURE_REQUEST&gt;\n\n&lt;PROJECT_CONTEXT&gt;\nStack, goals, constraints, roles, services, deadlines, or files to inspect.\n(Leave blank to let the AI discover the project itself.)\n&lt;/PROJECT_CONTEXT&gt;\n\n&lt;RUNTIME_AUDIT&gt;\nOFF\n&lt;/RUNTIME_AUDIT&gt;\n\n&lt;SOLUTIONS_ARCHITECT&gt;\nOFF\n&lt;/SOLUTIONS_ARCHITECT&gt;",
             "the raw-prompt placeholders",
           )}
         </div>
@@ -234,7 +237,7 @@ app.innerHTML = `
     <section class="runtime-command section" id="audit" aria-labelledby="howto-audit-title">
       <div class="container runtime-command__layout">
         <div class="section-heading" data-reveal>
-          <p class="eyebrow">04 · Optional deeper check</p>
+          <p class="eyebrow">04 · Optional deeper checks</p>
           <h2 id="howto-audit-title">Go deeper when the feature is scary.</h2>
           <p>
             Money, queues, shared state, retries - for those, add one token to any planning request
@@ -252,6 +255,32 @@ app.innerHTML = `
             "Or ask in plain words",
             "Where might this plan be wrong at runtime? Run the runtime audit.",
             "the plain-language runtime audit request",
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="runtime-command section" id="architect" aria-labelledby="howto-architect-title">
+      <div class="container runtime-command__layout">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">05 · Optional design deep-dive</p>
+          <h2 id="howto-architect-title">Make the winning design defend every choice.</h2>
+          <p>
+            New tables, cross-module writes, interlocking schema-permission-scheduling choices -
+            add one token and the plan gains a Decision Record: every sub-decision compared against
+            real options, facts re-verified, and every losing option's rejection reason written down.
+            Off by default; the planner may offer it, but never runs it uninvited.
+          </p>
+          <a class="button button--text" href="./solutions-architect.html">
+            How the Solutions Architect Pass works <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="copy-grid copy-grid--single">
+          ${copyBlock("Activation token", "+solutions-architect", "the solutions architect activation token")}
+          ${copyBlock(
+            "Or ask in plain words",
+            "Decompose the chosen design into its real decisions and show me why the alternatives lose.",
+            "the plain-language solutions architect request",
           )}
         </div>
       </div>
@@ -291,6 +320,7 @@ app.innerHTML = `
       <div class="site-footer__links">
         <a href="https://github.com/Sim2K/Planning-Prompt" target="_blank" rel="noreferrer">GitHub</a>
         <a href="./runtime-semantics.html">Runtime audit</a>
+        <a href="./solutions-architect.html">Architect pass</a>
         <a href="./how-to-use.html">How to use</a>
         <a href="https://ko-fi.com/sim2k" target="_blank" rel="noreferrer">Ko-fi</a>
         <a href="mailto:hello@Veedence.co.uk">Contact</a>
