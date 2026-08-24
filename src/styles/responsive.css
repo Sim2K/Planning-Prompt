@@ -75,6 +75,26 @@
     grid-template-columns: 1fr;
   }
 
+  .primer__intro {
+    grid-template-columns: 1fr;
+  }
+
+  .primer__copy h2 {
+    max-width: 24ch;
+  }
+
+  .primer-install {
+    width: min(100%, 680px);
+  }
+
+  .primer-modes {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .primer-mode--architect {
+    grid-column: span 2;
+  }
+
   .runtime-audit-card {
     max-width: 680px;
   }
@@ -145,6 +165,14 @@
   .method__intro {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .primer-modes {
+    grid-template-columns: 1fr;
+  }
+
+  .primer-mode--architect {
+    grid-column: auto;
   }
 
   .method__promise {
@@ -266,6 +294,26 @@
   .hero__actions {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .primer .eyebrow {
+    max-width: 300px;
+    line-height: 1.45;
+  }
+
+  .primer__points li {
+    padding-inline: 0.55rem;
+  }
+
+  .primer-install__calls div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .primer-scroll {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .hero__actions .button {

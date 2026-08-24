@@ -5,6 +5,7 @@ import "./styles/sections.css";
 import "./styles/responsive.css";
 
 import { DOWNLOADS, METHOD_STEPS, PLAN_SECTIONS, THINKING_MAPS } from "./content";
+import { initCopyButtons } from "./copy";
 import { initMotion } from "./motion";
 import { initNavigation } from "./navigation";
 import { initTheme } from "./theme";
@@ -87,6 +88,8 @@ app.innerHTML = `
   </header>
 
   <main id="main">
+    <p class="visually-hidden" role="status" aria-live="polite" data-copy-status></p>
+
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-glow" aria-hidden="true"></div>
@@ -187,6 +190,166 @@ app.innerHTML = `
           DISCOVER FIRST <span>✦</span> MAP THE BLAST RADIUS <span>✦</span> COMPARE BRANCHES
           <span>✦</span> DESIGN FOR FAILURE <span>✦</span> VALIDATE THE PLAN <span>✦</span>
         </div>
+      </div>
+    </section>
+
+    <section class="primer section" id="what-it-is" aria-labelledby="primer-title">
+      <div class="primer-aura" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="primer__intro">
+          <div class="primer__copy" data-reveal>
+            <p class="eyebrow">
+              <span class="status-dot"></span>
+              Start here · the 60-second version
+            </p>
+            <h2 id="primer-title">
+              A skill your AI installs once — then it plans
+              <em>like the engineer on call.</em>
+            </h2>
+            <p class="primer__lead">
+              The Robust Feature Planner is a free, open skill for Claude Code, OpenAI Codex, and
+              any capable LLM. You describe a feature. It investigates your actual project and hands
+              back a plan detailed enough for a human or an AI to build from — without writing a
+              single line of code first.
+            </p>
+
+            <ol class="primer__points">
+              <li>
+                <span class="primer__points-num">01</span>
+                <div>
+                  <strong>It reads your real project first</strong>
+                  <small>Files, schema, auth, tests, deploy path — every finding labelled Observed, Inferred, or Unknown. No invented context.</small>
+                </div>
+              </li>
+              <li>
+                <span class="primer__points-num">02</span>
+                <div>
+                  <strong>It compares at least three architectures</strong>
+                  <small>Conservative, modular, fastest-acceptable — then justifies the winner and writes down why each other option lost.</small>
+                </div>
+              </li>
+              <li>
+                <span class="primer__points-num">03</span>
+                <div>
+                  <strong>It writes a 20-section plan you can execute</strong>
+                  <small>Phased tasks, contracts, failure modes, security, a validation ladder, rollout order, and a way back out.</small>
+                </div>
+              </li>
+            </ol>
+
+            <p class="primer__guard">
+              <span aria-hidden="true">✦</span>
+              Read-only by design. It plans, reviews, and asks — it never touches your code until you
+              explicitly say go.
+            </p>
+          </div>
+
+          <aside class="primer-install" data-reveal aria-labelledby="primer-install-title">
+            <div class="primer-install__top">
+              <div class="console-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span id="primer-install-title">install in one line</span>
+              <span class="signal signal--safe">Free</span>
+            </div>
+
+            <p class="primer-install__intro">
+              No download, no config. Paste this to Claude Code, Codex, or your agent of choice and
+              it will fetch and install the skill itself.
+            </p>
+
+            <div class="primer-terminal" data-copy>
+              <div class="primer-terminal__head">
+                <span>Say this to your AI</span>
+                <button
+                  class="copy-block__button"
+                  type="button"
+                  data-copy-button
+                  aria-label="Copy the install request to clipboard"
+                >Copy</button>
+              </div>
+              <pre data-copy-source>Go to https://plannerskill.veedence.com/ and get the skill</pre>
+              <span class="primer-terminal__caret" aria-hidden="true"></span>
+            </div>
+
+            <dl class="primer-install__calls">
+              <div><dt>Claude Code</dt><dd><code>/robust-feature-planner</code></dd></div>
+              <div><dt>OpenAI Codex</dt><dd><code>$robust-feature-planner</code></dd></div>
+              <div><dt>Any other LLM</dt><dd>Paste the raw prompt</dd></div>
+            </dl>
+
+            <a
+              class="primer-install__repo"
+              href="https://github.com/Sim2K/Planning-Prompt"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="primer-install__repo-mark" aria-hidden="true">/</span>
+              <span>
+                <strong>github.com/Sim2K/Planning-Prompt</strong>
+                <small>Source, skills, validators, licence</small>
+              </span>
+              ${externalIcon}
+            </a>
+          </aside>
+        </div>
+
+        <div class="primer-modes">
+          <div class="primer-modes__wire" aria-hidden="true"><i data-primer-wire></i></div>
+
+          <article class="primer-mode primer-mode--core" data-reveal>
+            <div class="primer-mode__top">
+              <code>the plan</code>
+              <span class="primer-mode__state primer-mode__state--on">Always on</span>
+            </div>
+            <h3>Every run produces the blueprint.</h3>
+            <ul>
+              <li>20 sections, in a fixed, reviewable order</li>
+              <li>Risks traced by stable ID to a task or a non-goal</li>
+              <li>An optional validator that fails skeleton plans</li>
+            </ul>
+            <p class="primer-mode__foot">The default. Nothing to switch on.</p>
+          </article>
+
+          <article class="primer-mode primer-mode--runtime" data-reveal>
+            <div class="primer-mode__top">
+              <code>+runtime-audit</code>
+              <span class="primer-mode__state">Opt-in</span>
+            </div>
+            <h3>When timing is what will break it.</h3>
+            <ul>
+              <li>Surfaces hidden ordering and concurrency assumptions</li>
+              <li>Names ownership and transaction boundaries</li>
+              <li>Hands reviewers a ranked hotlist before merge</li>
+            </ul>
+            <a class="primer-mode__link" href="./runtime-semantics.html">
+              How the runtime audit works <span aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="primer-mode primer-mode--architect" data-reveal>
+            <div class="primer-mode__top">
+              <code>+solutions-architect</code>
+              <span class="primer-mode__state">Opt-in</span>
+            </div>
+            <h3>When the design itself is the risk.</h3>
+            <ul>
+              <li>Breaks the winning design into its real sub-decisions</li>
+              <li>Re-verifies every supporting fact against your code</li>
+              <li>Records, in writing, why each rejected option lost</li>
+            </ul>
+            <a class="primer-mode__link" href="./solutions-architect.html">
+              How the architect pass works <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        </div>
+
+        <a class="primer-scroll" href="#why" data-reveal>
+          <span class="primer-scroll__arrow" aria-hidden="true">↓</span>
+          <span class="primer-scroll__copy">
+            <strong>Keep scrolling for the in-depth view</strong>
+            <small>Why prompt-first fails, the five-step method in full, and how to run it inside Claude Code, OpenAI Codex, or plain prompting with any LLM.</small>
+          </span>
+        </a>
       </div>
     </section>
 
@@ -502,3 +665,4 @@ app.innerHTML = `
 initTheme();
 initNavigation();
 initMotion();
+initCopyButtons();

@@ -404,6 +404,620 @@
   color: var(--green-strong);
 }
 
+/* ---------------------------------------------------------------
+   Primer - the 60-second what-this-is band
+   --------------------------------------------------------------- */
+
+.primer {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.primer-aura {
+  position: absolute;
+  z-index: 0;
+  inset: -25% -12% auto;
+  height: 85%;
+  background:
+    radial-gradient(circle at 16% 32%, rgba(56, 232, 129, 0.13), transparent 42%),
+    radial-gradient(circle at 84% 10%, rgba(180, 108, 255, 0.13), transparent 46%);
+  animation: primer-drift 22s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.primer > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.primer__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  align-items: start;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+}
+
+.primer__copy h2 {
+  max-width: 22ch;
+  margin-top: 1.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.15rem, 4.3vw, 3.55rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.primer__copy h2 em {
+  display: block;
+  margin-top: 0.14em;
+  color: var(--green);
+  font-family: var(--font-serif);
+  font-size: 0.95em;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.primer__lead {
+  max-width: 620px;
+  margin-top: 1.5rem;
+  color: var(--text-muted);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+}
+
+.primer__points {
+  margin-top: 2.1rem;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.primer__points li {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 1.05rem;
+  padding: 1.05rem 0.9rem 1.05rem 0.85rem;
+  border-bottom: 1px solid var(--line);
+  transition: background 320ms ease;
+}
+
+.primer__points li::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--green);
+  content: "";
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 380ms var(--ease);
+}
+
+.primer__points li:hover {
+  background: var(--surface-soft);
+}
+
+.primer__points li:hover::before {
+  transform: scaleY(1);
+}
+
+.primer__points-num {
+  padding-top: 0.3rem;
+  color: var(--green-strong);
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.primer__points strong {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.primer__points small {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--text-faint);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.primer__guard {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  max-width: 620px;
+  margin-top: 1.6rem;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.primer__guard > span {
+  color: var(--green);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.primer-install {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.25rem, 2.6vw, 1.9rem);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(158deg, rgba(56, 232, 129, 0.08), transparent 44%),
+    var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.primer-install::after {
+  position: absolute;
+  right: -8rem;
+  bottom: -8rem;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(180, 108, 255, 0.2), transparent 68%);
+  content: "";
+  pointer-events: none;
+}
+
+.primer-install > * {
+  position: relative;
+  z-index: 1;
+}
+
+.primer-install__top {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-faint);
+  font-family: var(--font-display);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.primer-install__top .signal {
+  margin-left: auto;
+}
+
+.primer-install__intro {
+  margin-top: 1.1rem;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.primer-terminal {
+  position: relative;
+  overflow: hidden;
+  margin-top: 1.1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+}
+
+.primer-terminal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-faint);
+  background: var(--surface-raised);
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.primer-terminal pre {
+  margin: 0;
+  padding: 0.95rem 2.4rem 0.95rem 1rem;
+  color: var(--green);
+  font-family: var(--font-display);
+  font-size: clamp(0.78rem, 1.2vw, 0.88rem);
+  font-weight: 600;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.primer-terminal__caret {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.95rem;
+  width: 0.5rem;
+  height: 1rem;
+  background: var(--green);
+  animation: primer-blink 1.15s steps(1) infinite;
+}
+
+.primer-install__calls {
+  margin-top: 1.3rem;
+}
+
+.primer-install__calls div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.6rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.primer-install__calls dt {
+  color: var(--text-faint);
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.primer-install__calls dd {
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.primer-install__calls code {
+  display: inline-flex;
+  padding: 0.24rem 0.6rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--green-strong);
+  background: var(--bg-alt);
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.primer-install__repo {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.35rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-alt);
+  transition:
+    transform 300ms var(--ease),
+    border-color 300ms ease,
+    background 300ms ease;
+}
+
+.primer-install__repo:hover {
+  border-color: var(--green-strong);
+  background: var(--surface-raised);
+  transform: translateY(-3px);
+}
+
+.primer-install__repo-mark {
+  display: grid;
+  width: 2.1rem;
+  height: 2.1rem;
+  place-items: center;
+  border: 1px solid rgba(56, 232, 129, 0.3);
+  border-radius: 50%;
+  color: var(--green-strong);
+  background: var(--safe-bg);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.primer-install__repo strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.83rem;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.primer-install__repo small {
+  display: block;
+  margin-top: 0.12rem;
+  color: var(--text-faint);
+  font-size: 0.72rem;
+}
+
+.primer-install__repo svg {
+  width: 1.05rem;
+  color: var(--green-strong);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.primer-modes {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: clamp(2.2rem, 4vw, 3rem);
+}
+
+.primer-modes__wire {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--line);
+}
+
+.primer-modes__wire i {
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, var(--green), var(--violet));
+  box-shadow: 0 0 14px rgba(56, 232, 129, 0.45);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.primer-mode {
+  --mode-accent: var(--green);
+
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  padding: clamp(1.2rem, 2.4vw, 1.7rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition:
+    transform 320ms var(--ease),
+    border-color 320ms ease,
+    background 320ms ease;
+}
+
+.primer-mode::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--mode-accent);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 460ms var(--ease);
+}
+
+.primer-mode::after {
+  position: absolute;
+  right: -4rem;
+  bottom: -4rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  opacity: 0;
+  background: radial-gradient(circle, var(--mode-accent), transparent 66%);
+  content: "";
+  transition: opacity 320ms ease;
+  pointer-events: none;
+}
+
+.primer-mode:hover {
+  z-index: 2;
+  border-color: var(--line-strong);
+  background: var(--surface-raised);
+  transform: translateY(-6px);
+}
+
+.primer-mode:hover::before {
+  transform: scaleX(1);
+}
+
+.primer-mode:hover::after {
+  opacity: 0.16;
+}
+
+.primer-mode--runtime {
+  --mode-accent: var(--amber);
+}
+
+.primer-mode--architect {
+  --mode-accent: var(--violet);
+}
+
+:root[data-theme="light"] .primer-mode--core {
+  --mode-accent: var(--green-strong);
+}
+
+:root[data-theme="light"] .primer-mode--runtime {
+  --mode-accent: #9a6200;
+}
+
+:root[data-theme="light"] .primer-mode--architect {
+  --mode-accent: #6f34c6;
+}
+
+.primer-mode__top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.primer-mode__top code {
+  display: inline-flex;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--mode-accent);
+  background: var(--bg-alt);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.primer-mode__state {
+  color: var(--text-faint);
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.primer-mode__state--on {
+  color: var(--green-strong);
+}
+
+.primer-mode h3 {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.16rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.primer-mode ul {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.05rem;
+  list-style: none;
+}
+
+.primer-mode li {
+  position: relative;
+  padding: 0.42rem 0 0.42rem 1.05rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.primer-mode li::before {
+  position: absolute;
+  top: 0.95rem;
+  left: 0;
+  width: 0.42rem;
+  height: 1px;
+  background: var(--mode-accent);
+  content: "";
+}
+
+.primer-mode__foot,
+.primer-mode__link {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  padding-top: 1.2rem;
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.primer-mode__foot {
+  color: var(--text-faint);
+}
+
+.primer-mode__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--mode-accent);
+}
+
+.primer-mode__link span {
+  transition: transform 280ms var(--ease);
+}
+
+.primer-mode__link:hover span {
+  transform: translateX(4px);
+}
+
+.primer-scroll {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.4rem);
+  margin-top: clamp(2.4rem, 5vw, 3.4rem);
+  padding: clamp(1.1rem, 2.4vw, 1.5rem) clamp(1.2rem, 3vw, 2rem);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(115deg, rgba(56, 232, 129, 0.06), transparent 62%);
+  transition:
+    border-color 300ms ease,
+    background 300ms ease;
+}
+
+.primer-scroll:hover {
+  border-color: var(--green-strong);
+  border-style: solid;
+}
+
+.primer-scroll__arrow {
+  display: grid;
+  width: 2.7rem;
+  height: 2.7rem;
+  place-items: center;
+  border: 1px solid rgba(56, 232, 129, 0.32);
+  border-radius: 50%;
+  color: var(--green-strong);
+  background: var(--safe-bg);
+  font-size: 1.05rem;
+  animation: primer-bob 2.4s ease-in-out infinite;
+}
+
+.primer-scroll__copy strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.primer-scroll__copy small {
+  display: block;
+  max-width: 68ch;
+  margin-top: 0.32rem;
+  color: var(--text-muted);
+  font-size: 0.83rem;
+  line-height: 1.6;
+}
+
+@keyframes primer-drift {
+  to {
+    transform: translate3d(3%, 4%, 0) scale(1.09);
+  }
+}
+
+@keyframes primer-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes primer-bob {
+  50% {
+    transform: translateY(5px);
+  }
+}
+
 .comparison {
   background: var(--bg-alt);
 }

@@ -86,6 +86,21 @@ function initScrollMotion(): void {
   });
 
   gsap.fromTo(
+    "[data-primer-wire]",
+    { scaleX: 0 },
+    {
+      scaleX: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".primer-modes",
+        start: "top 92%",
+        end: "top 42%",
+        scrub: true,
+      },
+    },
+  );
+
+  gsap.fromTo(
     ".method-line__progress",
     { scaleY: 0 },
     {
